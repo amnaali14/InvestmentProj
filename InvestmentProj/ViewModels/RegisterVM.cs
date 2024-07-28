@@ -15,12 +15,12 @@ namespace InvestmentProj.ViewModels
         [DataType(DataType.Password)]
         public string? Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        [Compare("Password", ErrorMessage = "Passwords do not match,please try again!")]
        
         [Display(Name = "Confirm Password")]
         public string? ConfirmPassword { get; set; }
 
-        [DataType(DataType.MultilineText)] // Corrected attribute usage
+        [DataType(DataType.MultilineText)] 
         public string? Address { get; set; }
     }
 }
