@@ -1,14 +1,16 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     const themeToggle = document.getElementById('theme-toggle');
-    const currentTheme = localStorage.getItem('theme') || 'light';
 
-    if (currentTheme === 'dark') {
+    // Check local storage to apply the theme on page load
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') {
         document.body.classList.add('dark-mode');
         themeToggle.checked = true;
     }
 
+    // Add event listener to the toggle switch
     themeToggle.addEventListener('change', function () {
-        if (themeToggle.checked) {
+        if (this.checked) {
             document.body.classList.add('dark-mode');
             localStorage.setItem('theme', 'dark');
         } else {

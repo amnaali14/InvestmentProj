@@ -1,0 +1,54 @@
+﻿.sidebar {
+    background-color: #f8f9fa; /* Light background */
+    height: 100vh; /* Full height */
+    padding-top: 20px; /* Space from top */
+    padding-left: 20px; /* Increased padding for more space */
+    padding-right: 20px; /* Increased padding for more space */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s; /* Smooth transition */
+}
+
+    .sidebar .nav-item {
+        margin-bottom: 20px; /* Increased space between items */
+    }
+
+    .sidebar .nav-link {
+        color: #333; /* Darker link color */
+        font-size: 18px; /* Increased font size */
+        padding: 12px 20px; /* Padding around links */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s, color 0.3s; /* Smooth color transition */
+    }
+
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: #0056a6; /* Lighter highlight color on hover */
+            color: #fff; /* White text */
+        }
+
+        .sidebar .nav-link:hover {
+            text-decoration: none; /* Remove underline on hover */
+        }
+
+        .sidebar .nav-link .icon {
+            margin-right: 12px; /* Increased space between icon and text */
+        }
+
+    .sidebar .position-sticky {
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Ensure the sidebar stays on top */
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        padding-top: 15px;
+        padding-left: 10px; /* Adjust padding for smaller screens */
+        padding-right: 10px; /* Adjust padding for smaller screens */
+    }
+
+        .sidebar .nav-link {
+            font-size: 16px; /* Adjust font size for smaller screens */
+        }
+}

@@ -1,0 +1,16 @@
+﻿@model YourNamespace.Models.GalleryViewModel
+<h2>Gallery</h2>
+<p>Welcome to our gallery. Here are some of our featured items:</p>
+
+<div class="gallery-grid">
+    <!-- Gallery items go here -->
+    @foreach (var item in Model.Items)
+    {
+        <div class="gallery-item">
+            <img src="@item.ImageUrl" alt="@item.Title" />
+            <h3>@item.Title</h3>
+            <p>@item.Description</p>
+        </div>
+    }
+</div>
+
