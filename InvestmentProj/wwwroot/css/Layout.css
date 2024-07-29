@@ -4,6 +4,44 @@
     display: flex;
     flex-direction: column;
 }
+body {
+    padding-top: 56px; /* Adjust based on the height of your navbar */
+    margin: 0; /* Ensure no extra margin on the body */
+}
+
+/* Example CSS for a bold and prominent heading */
+.title {
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+    font-size: 48px; /* Large font size for prominence */
+    font-weight: 700; /* Bold font weight */
+    color: #222; /* Dark color for high contrast */
+    text-transform: uppercase; /* Uppercase text for impact */
+    letter-spacing: 2px; /* Increase letter spacing for readability */
+    margin: 0; /* Remove default margin if necessary */
+    padding: 20px 0; /* Add padding for spacing */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    line-height: 1.2; /* Adjust line height for better spacing */
+}
+
+/* Optional: Adding responsiveness */
+@media (max-width: 768px) {
+    .title {
+        font-size: 36px; /* Adjust size for smaller screens */
+        padding: 15px 0; /* Adjust padding for smaller screens */
+    }
+}
+
+
+.main-content {
+    margin-top: 0; /* Remove top margin if any */
+    padding: 1rem; /* Add padding as needed */
+    background-color: #f0f0f0; /* Ensure background color is set */
+}
+
+    /* Optional: Ensure there are no additional styles pushing content down */
+    .main-content > * {
+        margin-top: 0;
+    }
 
 .wrapper {
     flex: 1;
@@ -50,7 +88,7 @@
         height: 20px;
         background-color: #333; /* Dark background for the toggle switch */
         border-radius: 20px;
-        position: relative; /* Ensure position is relative */
+        position: center; /* Ensure position is relative */
         transition: background-color 0.3s;
     }
 
@@ -60,7 +98,7 @@
             height: 16px;
             border-radius: 50%;
             background-color: black; /* Color for the slider knob */
-            position: absolute; /* Ensure position is absolute */
+            position: center; /* Ensure position is absolute */
             transition: transform 0.3s;
             transform: translateX(2px);
         }
@@ -72,6 +110,21 @@
         .theme-switch input:checked + .slider::before {
             transform: translateX(14px); /* Move knob to the right when toggled on */
         }
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+
+.navbar.dark-mode {
+    background-color: #343a40;
+}
+
+.footer.dark-mode {
+    background-color: #343a40;
+    color: #ffffff;
+    border-top: 2px solid #444444;
+}
 
 /* Navbar styling */
 .navbar {
