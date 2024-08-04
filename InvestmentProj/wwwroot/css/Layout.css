@@ -1,195 +1,288 @@
-﻿html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-body {
-    padding-top: 56px; /* Adjust based on the height of your navbar */
-    margin: 0; /* Ensure no extra margin on the body */
+﻿/* Include DM Sans font */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+/* Apply DM Sans font to the entire webpage */
+body, html {
+    font-family: 'DM Sans', sans-serif;
 }
 
-/* Example CSS for a bold and prominent heading */
-.title {
-    font-family: 'Montserrat', sans-serif; /* Modern font */
-    font-size: 48px; /* Large font size for prominence */
-    font-weight: 700; /* Bold font weight */
-    color: #222; /* Dark color for high contrast */
-    text-transform: uppercase; /* Uppercase text for impact */
-    letter-spacing: 2px; /* Increase letter spacing for readability */
-    margin: 0; /* Remove default margin if necessary */
-    padding: 20px 0; /* Add padding for spacing */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-    line-height: 1.2; /* Adjust line height for better spacing */
-}
-
-/* Optional: Adding responsiveness */
-@media (max-width: 768px) {
-    .title {
-        font-size: 36px; /* Adjust size for smaller screens */
-        padding: 15px 0; /* Adjust padding for smaller screens */
-    }
-}
-
-
-.main-content {
-    margin-top: 0; /* Remove top margin if any */
-    padding: 1rem; /* Add padding as needed */
-    background-color: #f0f0f0; /* Ensure background color is set */
-}
-
-    /* Optional: Ensure there are no additional styles pushing content down */
-    .main-content > * {
-        margin-top: 0;
-    }
-
-.wrapper {
+/* Divider Text Styling */
+.divider-text:before,
+.divider-text:after {
+    color: white;
+    content: "";
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    border-bottom: 1px solid #555;
+    margin: auto 0.25rem;
+    box-shadow: 0 -2px;
 }
 
-.main-content {
-    flex: 1;
-    padding: 1rem;
-    /* Add any other styling you need */
-}
-
-.footer {
-    border-top: 2px solid #d1d1d1;
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
-    background-color: #f8f9fa;
+/* Navbar Brand Styling */
+a.navbar-brand {
+    white-space: normal;
     text-align: center;
-    padding: 1rem 0;
-    width: 100%;
-    position: relative; /* Change to relative */
-    bottom: 0;
+    word-break: break-all;
 }
 
-    .footer.dark-mode {
-        background-color: #343a40;
-        color: #ffffff;
-        border-top: 2px solid #444444;
-    }
-
-.theme-switch {
-    display: flex;
-    align-items: center;
-    position: center;
-}
-
-    .theme-switch input[type="checkbox"] {
-        display: none; /* Hide the default checkbox */
-    }
-
-    .theme-switch .slider {
-        cursor: pointer;
-        width: 34px;
-        height: 20px;
-        background-color: #333; /* Dark background for the toggle switch */
-        border-radius: 20px;
-        position: center; /* Ensure position is relative */
-        transition: background-color 0.3s;
-    }
-
-        .theme-switch .slider::before {
-            content: "";
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: black; /* Color for the slider knob */
-            position: center; /* Ensure position is absolute */
-            transition: transform 0.3s;
-            transform: translateX(2px);
-        }
-
-    .theme-switch input:checked + .slider {
-        background-color: black; /* Change color when toggled on */
-    }
-
-        .theme-switch input:checked + .slider::before {
-            transform: translateX(14px); /* Move knob to the right when toggled on */
-        }
-body.dark-mode {
-    background-color: #121212;
-    color: #e0e0e0;
-}
-
-
-.navbar.dark-mode {
-    background-color: #343a40;
-}
-
-.footer.dark-mode {
-    background-color: #343a40;
-    color: #ffffff;
-    border-top: 2px solid #444444;
-}
-
-/* Navbar styling */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-    .navbar.dark-mode {
-        background-color: #343a40;
-    }
-.navbar-brand {
-    margin-right: 20px; /* Adjust the space as needed */
-}
-.navbar-nav {
-    margin-left: auto; /* Pushes the nav links to the right */
-}
-
-/* Main container styling */
-.main-container {
-    margin-top: 60px; /* Adjust based on the height of the navbar */
-    padding: 1rem;
-    width: 100%;
-    min-height: calc(100vh - 60px); /* Adjust based on the height of the navbar */
-    overflow: auto;
-    background-color: #f0f0f0;
-}
-
-.nav-item a {
-    color: #0077cc;
-    text-decoration: none;
-}
-
-    .nav-item a:hover {
-        color: #0056a6;
-    }
-
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
+/* Active Navigation Link */
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
 
+/* Ensuring the navigation bar is using flexbox */
+.navbar {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+}
+
+/* Adjust the spacing for the specific brand */
+.navbar-brand {
+    margin-right: 20px; /* Adjust as needed */
+}
+
+/* Font Size Adjustments */
+html {
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Borders and Shadows */
 .border-top {
-    border-top: 2px solid #d1d1d1;
-    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #e5e5e5;
 }
 
 .border-bottom {
-    border-bottom: 2px solid #d1d1d1;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+/* Button Policy */
 button.accept-policy {
     font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Body Background */
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    animation: zoomIn 10s infinite; /* Adjust the duration as needed */
+}
+
+/* Hero Section Styling */
+.hero-section {
+    position: relative;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+    height: 100vh; /* Full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+    .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('/images/background.jpg') center center/cover no-repeat; /* Adjust the image path as necessary */
+        filter: blur(5px); /* Reduced blur effect */
+        z-index: 0;
+        clip-path: inset(0 0 30% 0); /* Adjust the clipping to show only part of the blur */
+    }
+
+    .hero-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3); /* Black color with 30% opacity */
+        z-index: 1;
+    }
+
+    .hero-section .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-section .display-4 {
+        font-size: 3.5rem;
+        color: black; /* Gold color removed */
+        font-family: 'DM Sans', sans-serif;
+        margin-bottom: 20px;
+        animation: fall 2s ease-in-out;
+    }
+
+    .hero-section .btn-primary {
+        font-size: 1.125rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        text-transform: uppercase;
+    }
+
+    .hero-section .lead {
+        font-size: 1rem; /* Adjust the font size as needed */
+        color: #000000; /* Black color */
+        font-family: 'DM Sans', sans-serif;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+/* Keyframes for falling animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh); /* Start above the viewport */
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0); /* End at the original position */
+        opacity: 1;
+    }
+}
+
+/* Button Styles */
+.btn-outline-primary {
+    color: #192E2F;
+    border-color: #192E2F;
+}
+
+    .btn-outline-primary:hover {
+        color: #fff;
+        background-color: #192E2F;
+        border-color: #192E2F;
+    }
+
+    .btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
+        box-shadow: 0 0 0 0.25rem rgba(25, 46, 47, 0.5);
+    }
+
+    .btn-check:checked + .btn-outline-primary,
+    .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
+        color: #fff;
+        background-color: #192E2F;
+        border-color: #192E2F;
+    }
+
+        .btn-check:checked + .btn-outline-primary:focus,
+        .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
+            box-shadow: 0 0 0 0.25rem rgba(25, 46, 47, 0.5);
+        }
+
+    .btn-outline-primary:disabled, .btn-outline-primary.disabled {
+        color: #192E2F;
+        background-color: transparent;
+    }
+
+/* Additional Button Styles */
+.btn-outline-warning {
+    color: #C07b24;
+    border-color: #C07b24;
+}
+
+    .btn-outline-warning:hover {
+        color: #fff;
+        background-color: #C07b24;
+        border-color: #C07b24;
+    }
+
+    .btn-check:focus + .btn-outline-warning, .btn-outline-warning:focus {
+        box-shadow: 0 0 0 0.25rem rgba(25, 46, 47, 0.5);
+    }
+
+    .btn-check:checked + .btn-outline-warning,
+    .btn-check:active + .btn-outline-warning, .btn-outline-warning:active, .btn-outline-warning.active, .btn-outline-warning.dropdown-toggle.show {
+        color: #fff;
+        background-color: #C07b24;
+        border-color: #C07b24;
+    }
+
+        .btn-check:checked + .btn-outline-warning:focus,
+        .btn-check:active + .btn-outline-warning:focus, .btn-outline-warning:active:focus, .btn-outline-warning.active:focus, .btn-outline-warning.dropdown-toggle.show:focus {
+            box-shadow: 0 0 0 0.25rem rgba(25, 46, 47, 0.5);
+        }
+
+    .btn-outline-warning:disabled, .btn-outline-warning.disabled {
+        color: #C07b24;
+        background-color: transparent;
+    }
+
+.btn-outline-secondary {
+    color: #134b5f;
+    border-color: #134b5f;
+}
+
+    .btn-outline-secondary:hover {
+        color: #fff;
+        background-color: #134b5f;
+        border-color: #134b5f;
+    }
+
+    .btn-check:focus + .btn-outline-secondary, .btn-outline-secondary:focus {
+        box-shadow: 0 0 0 0.25rem rgba(25, 46, 47, 0.5);
+    }
+
+    .btn-check:checked + .btn-outline-secondary,
+    .btn-check:active + .btn-outline-secondary, .btn-outline-secondary:active, .btn-outline-secondary.active, .btn-outline-secondary.dropdown-toggle.show {
+        color: #fff;
+        background-color: #134b5f;
+        border-color: #134b5f;
+    }
+
+        .btn-check:checked + .btn-outline-secondary:focus,
+        .btn-check:active + .btn-outline-secondary:focus, .btn-outline-secondary:active:focus, .btn-outline-secondary.active:focus, .btn-outline-secondary.dropdown-toggle.show:focus {
+            box-shadow: 0 0 0 0.25rem rgba(25, 46, 47, 0.5);
+        }
+
+    .btn-outline-secondary:disabled, .btn-outline-secondary.disabled {
+        color: #134b5f;
+        background-color: transparent;
+    }
+
+/* Button Primary */
+.btn-primary {
+    color: black;
+    background-color: #D6A3E2; /* Light purplish color */
+    border-color: #D6A3E2;
+    font-family: 'DM Sans', sans-serif; /* DM Sans font */
+    text-transform: none; /* Remove capitalization */
+    padding: 0.75rem 1.5rem; /* Adjust padding */
+    border-radius: 0.5rem; /* Rounded corners */
+    font-size: 1rem; /* Adjust font size */
+    font-weight: 500; /* Adjust font weight */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #C48BDF; /* Slightly darker purplish color for hover */
+        border-color: #C48BDF;
+    }
+
+    .btn-primary:focus {
+        box-shadow: 0 0 0 0.25rem rgba(212, 163, 226, 0.5); /* Focus effect */
+    }

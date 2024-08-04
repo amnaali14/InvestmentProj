@@ -1,9 +1,8 @@
 using InvestmentProj.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore.SqlServer;
 using InvestmentProj.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,26 +10,30 @@ builder.Configuration.AddJsonFile("appsettings.json");
 
 var connectionString = builder.Configuration.GetConnectionString("default");
 
-builder.Services.AddDbContext<AppDbContext>(
- options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.Password.RequiredUniqueChars = 0;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 8;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase = false;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
 
-builder.Services.AddIdentity<AppUser,IdentityRole>(
-    options =>
+// Add authentication and cookie configuration
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {
-        options.Password.RequiredUniqueChars = 0;
-        options.Password.RequireUppercase = false;
-        options.Password.RequiredLength = 8;
-        options.Password.RequireNonAlphanumeric = false;
-        options.Password.RequireLowercase = false;
-    })
-    .AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
-
+        options.LoginPath = "/Account/Login";
+        options.LogoutPath = "/Account/Logout";
+    });
 
 var app = builder.Build();
-
 
 if (!app.Environment.IsDevelopment())
 {
@@ -42,6 +45,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 

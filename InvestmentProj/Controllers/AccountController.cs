@@ -1,5 +1,7 @@
 ﻿using InvestmentProj.Models;
-using InvestmentProj.ViewModels; 
+using InvestmentProj.ViewModels;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +20,8 @@ namespace InvestmentProj.Controllers
             _userManager = userManager;
         }
 
+        [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
@@ -29,24 +33,26 @@ namespace InvestmentProj.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to sign in the user
                 var result = await _signInManager.PasswordSignInAsync(model.Username!, model.Password!, model.RememberMe, false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
                 }
-                // If login failed, display an error
-                ModelState.AddModelError("", "Invalid login attempt");
+
+                ModelState.AddModelError(string.Empty, "Invalid login attempt");
             }
             return View(model);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterVM model)
         {
             if (ModelState.IsValid)
@@ -67,17 +73,18 @@ namespace InvestmentProj.Controllers
                 }
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError("", error.Description);
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
             return View(model);
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
-    }
 
+    }
 }

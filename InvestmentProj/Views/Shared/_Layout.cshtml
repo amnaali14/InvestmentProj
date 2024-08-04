@@ -3,85 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - Royal Swiss</title>
+    <title>@ViewData["Title"] - Swiss International</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
-    <style>
-        body {
-            padding-top: 56px; 
-        }
 
-        
-        .theme-switch {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 20px;
-        }
-
-            .theme-switch input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #333; /* Set the default background color */
-            transition: 0.4s;
-            border-radius: 20px; /* Rounded corners */
-        }
-
-            .slider:before {
-                position: absolute;
-                content: "";
-                height: 16px;
-                width: 16px;
-                left: 2px;
-                bottom: 2px;
-                background-color: white; 
-                transition: 0.4s;
-                border-radius: 50%;
-            }
-
-        input:checked + .slider {
-            background-color: black; 
-        }
-
-            input:checked + .slider:before {
-                transform: translateX(20px); 
-
-        /* Dark mode styles */
-        .dark-mode {
-            background-color: #121212;
-            color: #e0e0e0;
-        }
-
-            .dark-mode .navbar {
-                background-color: #1f1f1f;
-            }
-
-            .dark-mode .footer {
-                background-color: #1f1f1f;
-                color: #e0e0e0;
-            }
-
-            .dark-mode .main-content {
-                background-color: #181818;
-            }
-    </style>
     @RenderSection("Styles", required: false)
 </head>
 <body class="light-mode">
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Royal Swiss</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Swiss International</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -93,32 +25,46 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="News">News</a>
+                    </li>
                 </ul>
                 <div class="d-flex align-items-center">
                     <label class="theme-switch">
                         <input type="checkbox" id="theme-toggle">
                         <span class="slider"></span>
                     </label>
-                    <partial name="_LoginPartial" />
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form asp-action="Logout" asp-controller="Account" method="post" class="m-0">
+                            <button type="submit" class="btn btn-secondary">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary ms-2" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        <a class="btn btn-secondary ms-2" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                    }
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <div class="wrapper">
         <div class="main-content">
             @RenderBody()
         </div>
-
         <footer class="footer">
-            <div class="container">
-                <a asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a>
+             <p>&copy; 2024 Grand Royal Swiss Hotel. All rights reserved.</p>
             </div>
         </footer>
     </div>
+
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
     <script src="~/js/theme-toggle.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

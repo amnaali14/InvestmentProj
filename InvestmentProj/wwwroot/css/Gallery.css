@@ -1,50 +1,48 @@
 ﻿<style>
 .gallery-container {
-    padding: 2rem; /* Space around the gallery */
-    background-color: #f8f9fa; /* Light background for the gallery section */
+    padding: 2rem; 
+    background-color: #f8f9fa;
 }
 
-/* Gallery Grid */
+
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
-    gap: 1rem; /* Space between grid items */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 1rem; 
 }
 
-/* Gallery Item */
+
 .gallery-item {
-    background-color: #ffffff; /* White background for items */
-    border: 1px solid #ddd; /* Light border around items */
-    border-radius: 8px; /* Rounded corners */
-    overflow: hidden; /* Hide overflow */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
-    /* Gallery Item Hover Effect */
+   
     .gallery-item:hover {
-        transform: scale(1.05); /* Slightly enlarge the item */
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+        transform: scale(1.05); 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
     }
 
-    /* Gallery Image */
     .gallery-item img {
-        width: 100%; /* Ensure image covers the full width */
-        height: auto; /* Maintain aspect ratio */
-        display: block; /* Remove extra space below images */
+        width: 100%; 
+        height: auto;
+        display: block;
     }
 
-    /* Gallery Title */
     .gallery-item h3 {
-        font-size: 1.25rem; /* Title font size */
-        margin: 1rem; /* Margin around the title */
-        color: #333; /* Dark color for the title text */
+        font-size: 1.25rem; 
+        margin: 1rem; 
+        color: #333; 
     }
 
-    /* Gallery Description */
+    
     .gallery-item p {
-        font-size: 1rem; /* Description font size */
-        margin: 0 1rem 1rem; /* Margin for description text */
-        color: #666; /* Lighter color for the description text */
+        font-size: 1rem;
+        margin: 0 1rem 1rem; 
+        color: #666; 
     }
     </style>

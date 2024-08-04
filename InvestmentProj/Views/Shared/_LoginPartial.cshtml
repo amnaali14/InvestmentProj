@@ -11,9 +11,10 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                    <a class="dropdown-item" asp-action="Logout" asp-controller="Account">
-                        Logout
-                    </a>
+                    <form asp-action="Logout" asp-controller="Account" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="dropdown-item">Logout</button>
+                    </form>
                 </li>
             </ul>
         </li>
