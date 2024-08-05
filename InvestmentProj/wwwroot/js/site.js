@@ -1,5 +1,4 @@
-﻿// Ensure DOM is fully loaded before executing scripts
-document.addEventListener('DOMContentLoaded', function () {
+﻿document.addEventListener('DOMContentLoaded', function () {
     const themeToggle = document.getElementById('theme-toggle');
 
     // Apply the stored theme from local storage on page load

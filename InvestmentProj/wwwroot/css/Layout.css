@@ -94,6 +94,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    flex-direction: column; /* Stack items vertically */
 }
 
     .hero-section::before {
@@ -138,6 +139,7 @@ body {
         padding: 0.5rem 1rem;
         border-radius: 0.25rem;
         text-transform: uppercase;
+        margin-top: 20px; /* Add margin to separate from text */
     }
 
     .hero-section .lead {
@@ -262,27 +264,70 @@ body {
         color: #134b5f;
         background-color: transparent;
     }
-
-/* Button Primary */
-.btn-primary {
-    color: black;
-    background-color: #D6A3E2; /* Light purplish color */
-    border-color: #D6A3E2;
-    font-family: 'DM Sans', sans-serif; /* DM Sans font */
-    text-transform: none; /* Remove capitalization */
-    padding: 0.75rem 1.5rem; /* Adjust padding */
-    border-radius: 0.5rem; /* Rounded corners */
-    font-size: 1rem; /* Adjust font size */
-    font-weight: 500; /* Adjust font weight */
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+/* Basic styles for the sidebar */
+.sidebar {
+    width: 250px; /* Adjust width as needed */
+    height: 100vh; /* Full height */
+    position: fixed; /* Fixed position on the left */
+    top: 0;
+    left: 0;
+    background-color: #f4f4f4; /* Background color */
+    border-right: 1px solid #ddd; /* Border on the right side */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Shadow for 3D effect */
+    z-index: 1000; /* Ensure it appears above other content */
+    overflow-y: auto; /* Scroll if content overflows */
 }
 
-    .btn-primary:hover {
-        color: #fff;
-        background-color: #C48BDF; /* Slightly darker purplish color for hover */
-        border-color: #C48BDF;
+    /* Sidebar items */
+    .sidebar ul {
+        list-style: none; /* Remove default list styling */
+        padding: 0;
+        margin: 0;
     }
 
-    .btn-primary:focus {
-        box-shadow: 0 0 0 0.25rem rgba(212, 163, 226, 0.5); /* Focus effect */
+.sidebar-item {
+    padding: 15px; /* Padding for items */
+    border-bottom: 1px solid #ddd; /* Border between items */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+    .sidebar-item:hover {
+        background-color: #e0e0e0; /* Hover effect */
     }
+
+/* Home page container (initially hidden) */
+#home-page-container {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 0;
+    left: 100%; /* Position it to the right of the sidebar */
+    width: 300px; /* Adjust width as needed */
+    background-color: white; /* Background color */
+    border: 1px solid #ccc; /* Border around content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for 3D effect */
+    z-index: 1000; /* Ensure it appears above other content */
+    overflow: hidden; /* Hide overflow content */
+}
+
+/* Show the home page content when hovering over the sidebar item */
+.sidebar-item:hover + #home-page-container {
+    display: block;
+}
+.sidebar {
+    position: fixed;
+    left: 0;
+    width: 200px;
+    /* Other sidebar styling */
+}
+
+.home-page-container {
+    display: none; /* Hide by default */
+    position: absolute;
+    left: 200px; /* Adjust according to sidebar width */
+    top: 0;
+    width: calc(100% - 200px); /* Adjust according to sidebar width */
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    padding: 20px;
+}

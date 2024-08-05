@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
+
 namespace InvestmentProj.Controllers
 {
     public class AccountController : Controller
@@ -78,6 +79,7 @@ namespace InvestmentProj.Controllers
             }
             return View(model);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
