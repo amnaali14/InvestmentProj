@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using YourNamespace.Models; // Update this namespace to match your project
+using InvestmentProj.Models; // Update this namespace to match your project
 using System;
 
-namespace YourNamespace.Controllers
+namespace InvestmentProj.Controllers
 {
     public class BookingController : Controller
     {
@@ -14,10 +14,10 @@ namespace YourNamespace.Controllers
         }
 
         [HttpPost]
-        public IActionResult BookRoom(BookingModel booking)
+        public IActionResult BookRoom(BookRoomViewModel booking)
         {
             // Basic form validation
-            if (!ModelState.IsValid || booking.CheckIn == default || booking.CheckOut == default || booking.CheckIn > booking.CheckOut)
+            if (!ModelState.IsValid || booking.Checkin == default || booking.Checkout == default || booking.Checkin > booking.Checkout)
             {
                 ModelState.AddModelError(string.Empty, "Invalid input data. Please check your inputs.");
                 return View(booking); // Return the view with validation errors and existing data
