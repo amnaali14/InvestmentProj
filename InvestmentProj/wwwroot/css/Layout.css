@@ -84,10 +84,15 @@ body {
 }
 
 /* Hero Section Styling */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .hero-section {
     position: relative;
     color: #fff;
-    padding: 100px 0;
     text-align: center;
     height: 100vh; /* Full height */
     display: flex;
@@ -104,10 +109,10 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('/images/background.jpg') center center/cover no-repeat; /* Adjust the image path as necessary */
-        filter: blur(5px); /* Reduced blur effect */
+        background: url('/images/background.jpg') center center/cover no-repeat; /* Background image */
+        filter: blur(5px); /* Blur effect */
         z-index: 0;
-        clip-path: inset(0 0 30% 0); /* Adjust the clipping to show only part of the blur */
+        background-attachment: fixed; /* Ensure background stays fixed on scroll */
     }
 
     .hero-section::after {
@@ -128,7 +133,7 @@ body {
 
     .hero-section .display-4 {
         font-size: 3.5rem;
-        color: black; /* Gold color removed */
+        color: #fff; /* Ensure text contrasts against the background */
         font-family: 'DM Sans', sans-serif;
         margin-bottom: 20px;
         animation: fall 2s ease-in-out;
@@ -140,11 +145,13 @@ body {
         border-radius: 0.25rem;
         text-transform: uppercase;
         margin-top: 20px; /* Add margin to separate from text */
+        background-color: #007bff;
+        border: none;
     }
 
     .hero-section .lead {
         font-size: 1rem; /* Adjust the font size as needed */
-        color: #000000; /* Black color */
+        color: #fff; /* Ensure text contrasts against the background */
         font-family: 'DM Sans', sans-serif;
         margin-top: 10px;
         font-weight: bold;
@@ -330,4 +337,170 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     padding: 20px;
+}
+.confirmation-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.confirmation-header {
+    background-color: rebeccapurple;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+    .confirmation-header h2 {
+        margin: 0;
+        color: #fff;
+        font-family: 'Public Sans', sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+    }
+
+.confirmation-content {
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.confirmation-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.confirmation-content p {
+    margin: 15px 0;
+}
+
+.confirmation-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .confirmation-content ul li {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+/* Toggle Switch Style */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    margin-right: 15px;
+}
+
+    .theme-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 21px;
+        width: 21px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+input:checked + .slider {
+    background-color: #0078F0;
+}
+
+    input:checked + .slider:before {
+        transform: translateX(25px);
+    }
+
+/* Light Mode Styles */
+.light-mode {
+    background-color: #fff;
+    color: #333;
+}
+
+    .light-mode .navbar,
+    .light-mode .footer {
+        background-color: #f8f9fa;
+        color: #333;
+    }
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+    .dark-mode .navbar,
+    .dark-mode .footer {
+        background-color: #1f1f1f;
+        color: #fff;
+    }
+/* Base styles for headings */
+input::placeholder {
+    color: #6c757d; /* Default placeholder color */
+}
+
+label {
+    color: #333; /* Default text color */
+}
+
+/* Dark theme specific styles */
+body.dark-mode label,
+body.dark-mode input::placeholder {
+    color: #f8f9fa; /* Light color for dark theme */
+}
+/* Light mode styles */
+body {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.navbar, .footer {
+    background-color: #f8f9fa;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+    body.dark-mode .navbar,
+    body.dark-mode .footer {
+        background-color: #1a1a1a;
+    }
+
+    body.dark-mode label,
+    body.dark-mode input::placeholder {
+        color: #ffffff; /* Ensure text is visible in dark mode */
+    }
+nav {
+    position: relative; /* or static, depending on your needs */
+    width: 100%;
 }

@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using InvestmentProj.Models; // Update this namespace to match your project
 using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using InvestmentProj.Data;
 
 namespace InvestmentProj.Controllers
 {
@@ -26,12 +30,48 @@ namespace InvestmentProj.Controllers
             // Process the form submission
             // You can save the data to the database or perform other actions here
 
-            return RedirectToAction("Confirmation");
+            return RedirectToAction("Bookingconfirmation");
+        }
+        [HttpPost]
+        public IActionResult BookRoomViewModel(BookRoomViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Convert ViewModel to the database entity if needed
+                var booking = new BookRoomViewModel
+                {
+                    Name = model.Name,
+                    Checkin = model.Checkin,
+                    Checkout = model.Checkout,
+                    Adults = model.Adults,
+                    Children = model.Children
+                    // Add other properties as needed
+                };
+
+
+                // Redirect or return a view
+                return RedirectToAction("Bookingconfirmation");
+            }
+
+            // If model is not valid, return the view with the model
+            return View(model);
         }
 
-        public IActionResult Confirmation()
+        public IActionResult Bookingconfirmation()
         {
             return View(); // Ensure that you have a view named "Confirmation" for this action
         }
-    }
+        private readonly AppDbContext _context;
+
+        public BookingController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> ReservationHistory()
+        {
+            var bookings = await _context.Bookings.ToListAsync();
+            return View(bookings);
+        }
+    } 
 }

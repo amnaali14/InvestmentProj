@@ -1,0 +1,31 @@
+﻿@model IEnumerable<InvestmentProj.Models.Booking>
+
+<h2>Reservation History</h2>
+<link rel="stylesheet" href="~/css/ReservationHistory.css" />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Hotel Type</th>
+            <th>Check in Date</th>
+            <th>Check out Date</th>
+            <th>Adults</th>
+            <th>Children</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.HotelType</td>
+                <td>@booking.Checkin.ToShortDateString()</td>
+                <td>@booking.Checkout.ToShortDateString()</td>
+                <td>@booking.Adults</td>
+                <td>@booking.Children</td>
+                <td>@booking.Name</td>
+                <td>@booking.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

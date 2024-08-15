@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace InvestmentProj.ViewModels
 {
@@ -16,11 +17,13 @@ namespace InvestmentProj.ViewModels
         public string? Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Passwords do not match,please try again!")]
-       
+
         [Display(Name = "Confirm Password")]
         public string? ConfirmPassword { get; set; }
 
-        [DataType(DataType.MultilineText)] 
+        [Required(ErrorMessage = "Gender is required.")]
+        public string Gender { get; set; }
+        [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
     }
 }

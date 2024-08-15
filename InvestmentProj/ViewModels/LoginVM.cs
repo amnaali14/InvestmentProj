@@ -4,7 +4,7 @@ namespace InvestmentProj.ViewModels
 {
     public class LoginVM
     {
-        [Required(ErrorMessage ="Username is mandatory.")]
+        [Required(ErrorMessage = "Username is mandatory.")]
         public string? Username { get; set; }
         [Required(ErrorMessage = "Password is mandatory.")]
 

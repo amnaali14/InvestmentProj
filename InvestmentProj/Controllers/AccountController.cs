@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-
 namespace InvestmentProj.Controllers
 {
     public class AccountController : Controller
@@ -37,6 +36,9 @@ namespace InvestmentProj.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Username!, model.Password!, model.RememberMe, false);
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByNameAsync(model.Username);
+                    TempData["ShowWelcomeMessage"] = true;
+                    TempData["UserName"] = user.UserName;
                     return RedirectToAction("Index", "Home");
                 }
 
@@ -70,6 +72,8 @@ namespace InvestmentProj.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    TempData["ShowWelcomeMessage"] = true;
+                    TempData["UserName"] = user.UserName;
                     return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
@@ -87,6 +91,5 @@ namespace InvestmentProj.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
-
     }
 }

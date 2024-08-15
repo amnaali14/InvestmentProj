@@ -6,56 +6,68 @@
 
 <link rel="stylesheet" href="~/css/BookRoom.css" />
 
-<div class="booking-form">
-    <h1>Book a Room</h1>
-    <form asp-action="BookRoom" method="post">
-        <div class="form-group">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" placeholder="Enter your name" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
+<link rel="stylesheet" href="~/css/Layout.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <div class="form-group">
-            <label asp-for="Email"></label>
-            <input asp-for="Email" type="email" placeholder="Enter your email" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
+<div class="booking-container">
+    <div class="booking-form">
+       
+        <h1 class="form-title">
+            <span>Book a</span> Room
+        </h1>
 
-        <div class="form-group">
-            <label asp-for="HotelType"></label>
-            <select asp-for="HotelType">
-                <option value="">Select Hotel Type</option>
-                <option value="Standard">Standard</option>
-                <option value="Deluxe">Deluxe</option>
-                <option value="Suite">Suite</option>
-            </select>
-            <span asp-validation-for="HotelType" class="text-danger"></span>
-        </div>
+        <form asp-action="BookRoom" method="post">
+            <div class="form-group">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter your name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Checkin"></label>
-            <input asp-for="Checkin" type="date" />
-            <span asp-validation-for="Checkin" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Checkout"></label>
-            <input asp-for="Checkout" type="date" />
-            <span asp-validation-for="Checkout" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="HotelType" class="form-label"></label>
+                <select asp-for="HotelType" class="form-control">
+                    <option value="">Select Hotel Type</option>
+                    <option value="Standard">Standard</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="Suite">Suite</option>
+                </select>
+                <span asp-validation-for="HotelType" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Adults"></label>
-            <input asp-for="Adults" type="number" min="1" />
-            <span asp-validation-for="Adults" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="Checkin" class="form-label"></label>
+                <input asp-for="Checkin" type="date" class="form-control" />
+                <span asp-validation-for="Checkin" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Children"></label>
-            <input asp-for="Children" type="number" min="0" />
-            <span asp-validation-for="Children" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label asp-for="Checkout" class="form-label"></label>
+                <input asp-for="Checkout" type="date" class="form-control" />
+                <span asp-validation-for="Checkout" class="text-danger"></span>
+            </div>
 
-        <button type="submit">Book Now</button>
-    </form>
+            <div class="form-group">
+                <label asp-for="Adults" class="form-label"></label>
+                <input asp-for="Adults" type="number" min="1" class="form-control" />
+                <span asp-validation-for="Adults" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Children" class="form-label"></label>
+                <input asp-for="Children" type="number" min="0" class="form-control" />
+                <span asp-validation-for="Children" class="text-danger"></span>
+            </div>
+            <div>
+                <canvas id="availableRoomsChart" width="400" height="200"></canvas>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+        </form>
+    </div>
 </div>
