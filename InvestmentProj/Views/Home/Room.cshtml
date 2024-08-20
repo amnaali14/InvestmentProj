@@ -1,0 +1,122 @@
+﻿@model IEnumerable<InvestmentProj.ViewModels.RoomVM>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>Available Rooms</title>
+    <style>
+        .room-card {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+            .room-card:hover {
+                transform: scale(1.02);
+            }
+
+            .room-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+        .room-card-body {
+            padding: 15px;
+        }
+
+        .room-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .room-description {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .room-price {
+            font-size: 1.2rem;
+            color: #007bff;
+        }
+
+        .room-capacity {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .room-reviews {
+            margin-top: 10px;
+        }
+
+            .room-reviews span {
+                display: block;
+                color: #777;
+            }
+
+        .room-more-details {
+            margin-top: 15px;
+        }
+
+            .room-more-details a {
+                color: #007bff;
+                text-decoration: none;
+            }
+
+                .room-more-details a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @if (Model == null)
+        {
+            <p>Model is null. No data is being passed to the view.</p>
+        }
+        else if (!Model.Any())
+        {
+            <p>No rooms available.</p>
+        }
+        else
+        {
+            <h1 class="my-4">@ViewBag.Message</h1>
+
+            @foreach (var room in Model)
+            {
+                if (room != null) // Check if room is not null
+                {
+                    <div class="room-card">
+                        <img src="@room.ImageUrl ?? " /images/default-room.jpg"" alt="Image of @room.Type ?? " Room"" />
+                        <div class="room-card-body">
+                            <h2 class="room-title">@room.Type ?? "Room Type"</h2>
+                            <p class="room-description">@room.Description ?? "Description not available"</p>
+                            <p class="room-price">Price: @room.PricePerNight.ToString("C") ?? "$0.00" per night</p>
+                            <p class="room-capacity">Capacity: @room.Capacity ?? 0 people</p>
+
+                            <div class="room-reviews">
+                                <span>Reviews:</span>
+                                <span>@room.ReviewCount ?? 0 reviews</span>
+                                <span>Rating: @room.Rating ?? 0 stars</span>
+                            </div>
+
+                            <div class="room-more-details">
+                                <a href="@Url.Action("RoomDetails", "Rooms", new { id = room.Id })">More details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,59 +1,176 @@
-﻿@using InvestmentProj.ViewModels
-@model LoginVM
+﻿@model InvestmentProj.ViewModels.LoginVM
+
+
+@{
+    Layout = "";
+    ViewData["Title"] ="Home Page";
+}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>Login</title>
-    <link rel="stylesheet" href="~/css/Login.css" />
-    <link rel="stylesheet" href="~/css/Layout.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css"
+    <style>
+        :root {
+            --primary-color: #6495ED;
+            --font-primary: 'Heebo', sans-serif;
+            --font-secondary: 'Montserrat', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-primary);
+            background-image: url('https://static.vecteezy.com/system/resources/previews/010/818/596/large_2x/abstract-background-template-for-social-media-minimal-backgrounds-with-liquid-shapes-free-vector.jpg');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+            /* Overlay */
+            body::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            }
+
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            font-family: var(--font-secondary);
+        }
+
+            .login-card h1 {
+                margin-bottom: 30px;
+                color: var(--primary-color);
+                font-weight: bold;
+            }
+
+            .login-card input[type="text"],
+            .login-card input[type="password"] {
+                width: 100%;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+                font-size: 16px;
+                padding: 10px;
+            }
+
+        .input-box {
+            padding: 6px 0;
+            margin-bottom: 4px;
+        }
+
+        .login-card input:focus {
+            outline: 1px solid var(--primary-color);
+            box-shadow: 0px 0px 1px 1px var(--primary-color);
+        }
+
+        .login-card .login-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .login-card .login-btn:hover {
+                background-color: black;
+            }
+
+        .register-link {
+            width: 100%;
+            padding: 10px 0;
+            margin-bottom: 6px;
+            font-family: 'Heebo', sans-serif; /* Use the same font as in your login form */
+            text-align: center; /* Center-align the text */
+        }
+
+            .register-link a {
+                color: black;
+                text-decoration: none; /* Remove underline */
+                font-size: 16px; /* Match font size if needed */
+            }
+
+
+        .rememberme {
+            width: 100%;
+            padding: 0 6px;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .login-card input[type="checkbox"]:checked {
+            background-color: black;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0 6px;
+        }
+
+        span {
+            text-align: start;
+            width: 100%;
+            display: block;
+            min-height: 24px;
+            padding-left: 4px;
+            font-size: 18px;
+        }
+    </style>
 </head>
-
-<body class="light-mode">
-    @{
-        ViewData["Title"] = "Login";
-    }
-
-    <div class="rectangle-container compact">
-        <div class="login-container compact">
-            <div class="icon-container compact">
-                <div class="ellipse compact">
-                    <img src="~/images/focal-person.jpeg" alt="Person Icon" class="icon-img">
-                </div>
+<body>
+    <div class="login-card">
+        <h1 class="py-4 text-uppercase text-center">Welcome Back!</h1>
+        <h1 class="py-4 text-uppercase text-center">Login</h1>
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger text-start"></div>
+            <div class="input-box">
+                <input asp-for="Username" placeholder="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
             </div>
-            <h2 class="login-heading compact">Login</h2>
-            <form asp-action="Login" class="compact-form">
-                <div asp-validation-summary="ModelOnly" class="text-danger compact"></div>
-
-                <div class="form-group compact">
-                    <input asp-for="Username" class="form-control compact" placeholder="Username">
-                    <span class="focal-icon compact"></span>
-                </div>
-
-                <div class="form-group compact">
-                    <input asp-for="Password" class="form-control compact" placeholder="Password" type="password">
-                    <span class="visibility-off-icon compact"></span>
-                </div>
-
-                <div class="form-group remember-me-container compact">
-                    <div class="form-check compact">
-                        <input asp-for="RememberMe" class="form-check-input compact remember-me-checkbox" />
-                        <label class="form-check-label compact remember-me-label">Remember Me</label>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary login-button compact">Login</button>
-
-                <div class="mt-2">
-                    <p class="text-muted text-center compact">Don't have an account? <a asp-action="Register" class="btn-link compact">Register now</a></p>
-                </div>
-            </form>
+            <div class="input-box">
+                <input asp-for="Password" placeholder="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="text-start rememberme">
+                <label>
+                    <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+            </div>
+            <div>
+                <input type="submit" value="Log In" class="login-btn" />
+            </div>
+        </form>
+        <div class="register-link text-center">
+            <a class="w-100 text-decoration-underline" asp-action="Register">Don't have an account? Register</a>
         </div>
     </div>
+
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/lib/jquery/dist/jquery.js"></script>
     <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>

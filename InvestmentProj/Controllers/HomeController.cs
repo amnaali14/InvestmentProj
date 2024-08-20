@@ -31,6 +31,11 @@ namespace InvestmentProj.Controllers
             // You can add logic here to fetch news and updates from a database or service.
             return View();
         }
+        public IActionResult Room()
+        {
+            // You can add logic here to fetch news and updates from a database or service.
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

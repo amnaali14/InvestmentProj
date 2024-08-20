@@ -1,140 +1,141 @@
-﻿/* Root and body styling */
+﻿/* Root variables for consistency */
 :root {
     --primary-color: #0078F0;
+    --secondary-color: #333;
+    --background-color: #f9f9f9;
+    --input-background-color: #ffffff;
+    --input-border-color: #ccc;
+    --input-focus-border-color: var(--primary-color);
+    --button-background-color: var(--primary-color);
+    --button-hover-background-color: #005bb5;
+    --font-family: var(--font-family) --font-size: 16px;
+    --font-size-small: 12px;
 }
 
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #e9ecef;
     margin: 0;
     padding: 0;
-}
-
-/* Main container for the registration card */
-.register-container {
+    font-family: var(--font-family);
+    background-image: url('https://static.vecteezy.com/system/resources/previews/010/818/596/large_2x/abstract-background-template-for-social-media-minimal-backgrounds-with-liquid-shapes-free-vector.jpg');
+    background-size: cover;
+    background-position: center;
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: #e9ecef; /* Light gray background for contrast */
+    align-items: center;
 }
 
-/* Register card styling */
+    /* Overlay for improved readability */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+/* Main card container */
 .register-card {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color);
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 1;
 }
 
-    /* Headings inside the card */
-    .register-card h2 {
+    /* Heading styling */
+    .register-card h1 {
         margin-bottom: 20px;
-        color: var(--primary-color); /* Primary color for headings */
-        font-size: 24px;
-        font-weight: 600;
+        color: var(--primary-color);
+        font-weight: 400;
+        font-size: 36px;
+        text-align: center;
     }
 
-/* Form groups for input fields */
-.form-group {
+/* Form group styling */
+.input-box {
     margin-bottom: 15px;
 }
 
-    .form-group input,
-    .form-group textarea {
+    .input-box input,
+    .input-box select,
+    .input-box textarea {
         width: 100%;
-        padding: 10px 12px;
-        border: 1px solid var(--primary-color);
+        border: 1px solid var(--input-border-color);
         border-radius: 5px;
+        background-color: var(--input-background-color);
+        font-size: var(--font-size);
+        padding: 10px;
         box-sizing: border-box;
-        font-family: 'Public Sans', Arial, sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        color: #333;
-        background-color: #eaf4ff;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
-        /* Hover effects for inputs */
-        .form-group input:hover,
-        .form-group textarea:hover {
-            background-color: #d0e6f5; /* Slightly darker blue on hover */
-            border-color: #0056b3;
+        .input-box input:focus,
+        .input-box select:focus,
+        .input-box textarea:focus {
+            border-color: var(--input-focus-border-color);
+            outline: none;
+            box-shadow: 0 0 5px var(--input-focus-border-color);
         }
 
 /* Button styling */
-.btn-primary {
-    background-color: var(--primary-color);
+.register-btn {
+    width: 100%;
+    padding: 10px;
     border: none;
-    color: #ffffff;
-    padding: 10px 20px;
-    cursor: pointer;
     border-radius: 5px;
-    font-size: 16px; /* Larger font size for better readability */
-    transition: background-color 0.3s ease;
+    background-color: var(--button-background-color);
+    color: #fff;
+    font-size: var(--font-size);
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-    .btn-primary:hover {
-        background-color: #0056b3;
+    .register-btn:hover {
+        background-color: var(--button-hover-background-color);
     }
 
-/* Text and link styling */
-.text-info {
-    color: var(--primary-color);
+/* Link styling */
+.login-link {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
 }
 
-.text-danger {
-    color: #dc3545; /* Red for errors */
-}
-
-.text-decoration-none {
-    text-decoration: none;
-    color: var(--primary-color);
-}
-
-    .text-decoration-none:hover {
-        text-decoration: underline;
+    .login-link a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-size: var(--font-size);
     }
 
-.mt-3 {
-    margin-top: 1rem;
+/* Phone number group styling */
+.phone-number-group {
+    display: flex;
+    gap: 10px;
 }
 
-/* Specific textarea styling */
+.country-code-dropdown,
+.phone-number-input {
+    flex: 1;
+}
+
+/* Textarea styling */
 .address-textarea {
-    width: 100%; /* Full width for address field */
-    height: 80px; /* Increased height for better visibility */
-    font-family: 'Public Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
+    height: 100px;
+    resize: vertical;
 }
 
-    /* Hover effect for the address textarea */
-    .address-textarea:hover {
-        background-color: #d0e6f5; /* Slightly darker blue on hover */
-        border-color: #0056b3;
-    }
-
-/* Styling for the rectangle (used for layout or decorative purposes) */
-.rectangle {
-    width: 590px;
-    height: 635px;
-    position: absolute;
-    top: 50%; /* Centered vertically */
-    left: 50%; /* Centered horizontally */
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
-    opacity: 1;
-    background: #ffffff;
-    box-shadow: 0px 8px 53px rgba(0, 120, 240, 0.4);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+/* Validation message styling */
+.text-danger {
+    color: cornflowerblue;
 }
 
-    .rectangle:hover {
-        background: var(--primary-color);
-        box-shadow: 0px 8px 53px rgba(0, 120, 240, 0.25);
-    }
+/* Form check styling */
+.form-check-inline {
+    margin-right: 10px;
+}

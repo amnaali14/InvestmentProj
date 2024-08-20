@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Registration Confirmation";
+}
+<link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
+
+<div class="confirmation-container">
+    <div class="confirmation-header">
+        <h2>Your registration is completed!</h2>
+    </div>
+    <div class="confirmation-content">
+        <p>You can now log in to your account using your credentials.</p>
+    </div>
+
+    <!-- Add a button to redirect to the login page -->
+    <div class="confirmation-actions">
+        <a class="btn btn-primary" asp-action="Login">Log In</a>
+    </div>
+</div>
