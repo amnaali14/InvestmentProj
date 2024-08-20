@@ -1,6 +1,5 @@
 ﻿@model InvestmentProj.ViewModels.LoginVM
 
-
 @{
     Layout = "";
     ViewData["Title"] ="Home Page";
@@ -148,6 +147,7 @@
         <h1 class="py-4 text-uppercase text-center">Welcome Back!</h1>
         <h1 class="py-4 text-uppercase text-center">Login</h1>
         <form asp-action="Login">
+            @Html.AntiForgeryToken()
             <div asp-validation-summary="ModelOnly" class="text-danger text-start"></div>
             <div class="input-box">
                 <input asp-for="Username" placeholder="Username" class="form-control" />
