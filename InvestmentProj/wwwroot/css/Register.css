@@ -10,21 +10,26 @@
     --button-hover-background-color: #005bb5;
     --font-family: var(--font-family) --font-size: 16px;
     --font-size-small: 12px;
+    --primary-color: #6495ED;
+    --font-primary: 'Heebo', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
 }
 
 /* General body styling */
 body {
+
     margin: 0;
     padding: 0;
-    font-family: var(--font-family);
+    font-family: var(--font-primary);
     background-image: url('https://static.vecteezy.com/system/resources/previews/010/818/596/large_2x/abstract-background-template-for-social-media-minimal-backgrounds-with-liquid-shapes-free-vector.jpg');
     background-size: cover;
-    background-position: center;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
+
 
     /* Overlay for improved readability */
     body::before {
@@ -122,6 +127,7 @@ body {
 .country-code-dropdown,
 .phone-number-input {
     flex: 1;
+    --font-family = var(--font-family);
 }
 
 /* Textarea styling */
@@ -139,3 +145,5 @@ body {
 .form-check-inline {
     margin-right: 10px;
 }
+
+</style>

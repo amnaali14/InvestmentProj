@@ -9,7 +9,6 @@ namespace InvestmentProj.Models
         public string HotelType { get; set; }                                                              //Hotel type for booking and it's validation
 
 
-
         [Required(ErrorMessage = "Check-in date is required.")]
         [DataType(DataType.Date, ErrorMessage = "Invalid date format.")]
         [Display(Name = "Check-in Date")]                                                               // Check in date for booking and it's validation

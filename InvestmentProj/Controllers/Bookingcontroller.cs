@@ -1,15 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using InvestmentProj.Models; // Update this namespace to match your project
 using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using InvestmentProj.Data;
+using Microsoft.AspNetCore.Identity.UI.Services; // For IEmailSender
 
 namespace InvestmentProj.Controllers
 {
     public class BookingController : Controller
     {
+        private readonly AppDbContext _context;
+        private readonly IEmailSender _emailSender;
+
+        // Constructor with dependency injection for AppDbContext and IEmailSender
+        public BookingController(AppDbContext context, IEmailSender emailSender)
+        {
+            _context = context;
+            _emailSender = emailSender;
+        }
+
         [HttpGet]
         public IActionResult BookRoom()
         {
@@ -18,7 +28,7 @@ namespace InvestmentProj.Controllers
         }
 
         [HttpPost]
-        public IActionResult BookRoom(BookRoomViewModel booking)
+        public async Task<IActionResult> BookRoom(BookRoomViewModel booking)
         {
             // Basic form validation
             if (!ModelState.IsValid || booking.Checkin == default || booking.Checkout == default || booking.Checkin > booking.Checkout)
@@ -27,45 +37,32 @@ namespace InvestmentProj.Controllers
                 return View(booking); // Return the view with validation errors and existing data
             }
 
-            // Process the form submission
-            // You can save the data to the database or perform other actions here
-
-            return RedirectToAction("Bookingconfirmation");
-        }
-        [HttpPost]
-        public IActionResult BookRoomViewModel(BookRoomViewModel model)
-        {
-            if (ModelState.IsValid)
+            // Save the booking to the database
+            _context.Bookings.Add(new Booking // Assuming Booking is your entity class
             {
-                // Convert ViewModel to the database entity if needed
-                var booking = new BookRoomViewModel
-                {
-                    Name = model.Name,
-                    Checkin = model.Checkin,
-                    Checkout = model.Checkout,
-                    Adults = model.Adults,
-                    Children = model.Children
-                    // Add other properties as needed
-                };
+                Name = booking.Name,
+                Checkin = booking.Checkin,
+                Checkout = booking.Checkout,
+                Adults = booking.Adults,
+                Children = booking.Children
+                // Add other properties as needed
+            });
 
+            await _context.SaveChangesAsync();
 
-                // Redirect or return a view
-                return RedirectToAction("Bookingconfirmation");
-            }
+            // Send confirmation email
+            var email = booking.Email; // Ensure the ViewModel has an Email property
+            var subject = "Booking Confirmation";
+            var message = $"Dear {booking.Name},<br><br>Your booking has been confirmed.<br>Check-in: {booking.Checkin.ToShortDateString()}<br>Check-out: {booking.Checkout.ToShortDateString()}<br><br>Thank you for booking with us!";
 
-            // If model is not valid, return the view with the model
-            return View(model);
+            await _emailSender.SendEmailAsync(email, subject, message);
+
+            return RedirectToAction("BookingConfirmation");
         }
 
-        public IActionResult Bookingconfirmation()
+        public IActionResult BookingConfirmation()
         {
-            return View(); // Ensure that you have a view named "Confirmation" for this action
-        }
-        private readonly AppDbContext _context;
-
-        public BookingController(AppDbContext context)
-        {
-            _context = context;
+            return View(); // Ensure that you have a view named "BookingConfirmation" for this action
         }
 
         public async Task<IActionResult> ReservationHistory()
@@ -73,5 +70,5 @@ namespace InvestmentProj.Controllers
             var bookings = await _context.Bookings.ToListAsync();
             return View(bookings);
         }
-    } 
+    }
 }

@@ -11,7 +11,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link rel="stylesheet" href="~/css/Register.css" /> <!-- Ensure this path is correct -->
+    <link rel="stylesheet" href="~/css/Register.css" />
 </head>
 <body>
     <div class="register-card">
@@ -30,7 +30,10 @@
 
             <div class="input-box phone-number-group">
                 <select asp-for="CountryCode" class="form-control country-code-dropdown">
-                    <option value="">Select country code</option>
+                 
+                        <option value="">Select country code</option>
+                      
+
                     @foreach (var countryCode in Model.CountryCodes)
                     {
                         <option value="@countryCode.Code">@countryCode.Name (@countryCode.Code)</option>
