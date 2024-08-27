@@ -3,69 +3,79 @@
 @{
     ViewData["Title"] = "Book a Room";
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="~/css/BookRoom.css" />
 <link rel="stylesheet" href="~/css/Layout.css" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-<div class="booking-container">
-    <div class="booking-form">
-       
-        <h1 class="form-title">
-            <span>Book a</span> Room
-        </h1>
+</head>
+<body>
+    <div class="booking-card">
+        <h1 class="py-4 text-uppercase text-center">Book Your Stay</h1>
+        <h2 class="py-4 text-uppercase text-center">Reservation Form</h2>
+        <form asp-action="BookRoom">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger text-start"></div>
 
-        <form asp-action="BookRoom" method="post">
-            <div class="form-group">
-                <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control" placeholder="Enter your name" />
+            <!-- Full Name -->
+            <div class="input-box">
+                <input asp-for="Name" placeholder="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Email" class="form-label"></label>
-                <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email" />
+            <!-- Email -->
+            <div class="input-box">
+                <input asp-for="Email" placeholder="Email" type="email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="HotelType" class="form-label"></label>
-                <select asp-for="HotelType" class="form-control">
-                    <option value="">Select Hotel Type</option>
-                    <option value="Standard">Standard</option>
-                    <option value="Deluxe">Deluxe</option>
-                    <option value="Suite">Suite</option>
-                </select>
-                <span asp-validation-for="HotelType" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Checkin" class="form-label"></label>
+            <!-- Check-In Date -->
+            <div class="input-box">
                 <input asp-for="Checkin" type="date" class="form-control" />
                 <span asp-validation-for="Checkin" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Checkout" class="form-label"></label>
+            <!-- Check-Out Date -->
+            <div class="input-box">
                 <input asp-for="Checkout" type="date" class="form-control" />
                 <span asp-validation-for="Checkout" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Adults" class="form-label"></label>
-                <input asp-for="Adults" type="number" min="1" class="form-control" />
+            <!-- Number of Adults -->
+            <div class="input-box">
+                <input asp-for="Adults" type="number" min="1" max="10" class="form-control" />
                 <span asp-validation-for="Adults" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Children" class="form-label"></label>
-                <input asp-for="Children" type="number" min="0" class="form-control" />
+            <!-- Number of Children -->
+            <div class="input-box">
+                <input asp-for="Children" type="number" min="0" max="10" class="form-control" />
                 <span asp-validation-for="Children" class="text-danger"></span>
             </div>
-            <div>
-                <canvas id="availableRoomsChart" width="400" height="200"></canvas>
-            </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+            <!-- Submit Button -->
+            <div>
+                <input type="submit" value="Book Now" class="submit-btn" /> <!-- Changed class to "submit-btn" -->
+            </div>
         </form>
+
+        <!-- Optional: Add a link to other pages if needed -->
+        <div class="text-center">
+            <a class="text-decoration-underline" href="/Home/Index">Back to Home</a>
+        </div>
     </div>
-</div>
+
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

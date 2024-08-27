@@ -67,11 +67,11 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-            // Trim and normalize case for email and username
+      
             var trimmedEmail = model.Email?.Trim().ToLower();
           
 
-            // Check if user already exists
+         
             if (await _userManager.FindByEmailAsync(trimmedEmail) != null)
             {
                 ModelState.AddModelError(string.Empty, "Email is already in use.");
@@ -108,7 +108,7 @@ public async Task<IActionResult> Logout()
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
-    // Helper method to get country codes
+   
     private List<CountryCodeVM> GetCountryCodes()
     {
         var countryCodes = new List<CountryCodeVM>
