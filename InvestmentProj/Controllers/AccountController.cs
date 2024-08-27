@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using InvestmentProj.ViewModels;
 using InvestmentProj.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 
 public class AccountController : Controller
 {
@@ -15,40 +16,38 @@ public class AccountController : Controller
         _signInManager = signInManager;
     }
 
- 
+
     [HttpGet]
     public IActionResult Login()
     {
         return View();
     }
 
-    // POST: /Account/Login
-    // POST: /Account/Login
     [HttpPost]
     [ValidateAntiForgeryToken]
-    // POST: /Account/Login
   
+
     public async Task<IActionResult> Login(LoginVM model)
     {
         if (ModelState.IsValid)
         {
-            // Attempt to sign in the user with the provided username and password
-            var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: false, lockoutOnFailure: false);
+          
+            var result = await _signInManager.PasswordSignInAsync(model.Username!, model.Password!, model.RememberMe, false);
 
             if (result.Succeeded)
             {
-                // Redirect to the homepage after successful login.
+     
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                // If authentication fails, add an error message.
-                ModelState.AddModelError("", "Invalid login attempt.");
+                
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
 
         }
 
-        // If we got this far, something failed, redisplay the form.
+       
         return View(model);
     }
 
@@ -68,40 +67,39 @@ public class AccountController : Controller
     // POST: /Account/Register
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> Register(RegisterVM model)
     {
         if (ModelState.IsValid)
         {
-            var user = new AppUser { Name = model.Name, UserName = model.Name.Trim(' '), Email = model.Email   };
+            AppUser user = new()
+            {
+                Name = model.Name,
+                Email = model.Email,
+                UserName = model.Email,
+                Address = model.Address
+            };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
-
+            var result = await _userManager.CreateAsync(user, model.Password!);
             if (result.Succeeded)
             {
-                // Automatically sign in the user after registration
                 await _signInManager.SignInAsync(user, isPersistent: false);
-
-                // Redirect to the registration confirmation page or homepage
                 return RedirectToAction("Index", "Home");
             }
-            else
+            foreach (var error in result.Errors)
             {
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                ModelState.AddModelError(string.Empty, error.Description);
             }
         }
-
-        // If we got this far, something failed, redisplay the form with the list of country codes.
-        model.CountryCodes = GetCountryCodes();
         return View(model);
     }
 
+
     private List<CountryCodeVM> GetCountryCodes()
     {
-       
-            var countryCodes = new List<CountryCodeVM>
+
+        var countryCodes = new List<CountryCodeVM>
     {
         new CountryCodeVM { Code = "+93", Name = "Afghanistan" },
         new CountryCodeVM { Code = "+61", Name = "Australia" },
@@ -160,11 +158,8 @@ public class AccountController : Controller
         new CountryCodeVM { Code = "+69", Name = "Papua New Guinea" }
     };
 
-            return countryCodes.OrderBy(c => c.Name).ToList();
-        }
+        return countryCodes.OrderBy(c => c.Name).ToList();
+    }
 
-    
+
 }
-
-
-

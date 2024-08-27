@@ -14,13 +14,13 @@ namespace InvestmentProj.ViewModels
         public string? Email { get; set; }
 
         [Required(ErrorMessage = "Country code is required.")]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         [Required(ErrorMessage = "PhoneNumber is required.")]
         [Phone(ErrorMessage = "Invalid PhoneNumber format.")]
         [StringLength(15, ErrorMessage = "PhoneNumber cannot be longer than 15 digits.")]
         [RegularExpression(@"^\d+$", ErrorMessage = "PhoneNumber must be numeric.")]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
@@ -31,7 +31,7 @@ namespace InvestmentProj.ViewModels
         public string? ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Gender is required.")]
-        public string Gender { get; set; }
+        public string? Gender { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
