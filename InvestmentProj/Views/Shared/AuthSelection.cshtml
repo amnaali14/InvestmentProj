@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/AuthSelection.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Include GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+
+</head>
+<body>
+    <nav id="sidebar" class="bg-dark text-white">
+        <div class="sidebar-header">
+            <div class="block-title wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                Connect with us
+            </div>
+        </div>
+        <ul class="list-unstyled components">
+            <li>
+                <a href="https://www.facebook.com/share/hPzLvjbYqRoownpx/?mibextid=qi2Omg" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/sereneheightshotelsandresorts?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+            <li>
+                <a href="tel:+923331524862">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <style>
+        /* Ensure the icons are circular and centered */
+        #sidebar .components li a {
+            display: inline-block;
+            width: 50px; /* Adjust the size as needed */
+            height: 50px; /* Same as width for a perfect circle */
+            line-height: 50px; /* Vertically center the icon */
+            margin: 10px 0; /* Adjust margin to control vertical spacing */
+            color: #ffffff; /* Icon color */
+            font-size: 24px; /* Adjust icon size */
+            text-align: center;
+            background-color: #343a40; /* Background color (same as sidebar) */
+            border-radius: 50%; /* Create the circular shape */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+            /* Hover effect without changing icon position */
+            #sidebar .components li a:hover {
+                background-color: #007bff; /* Change background color on hover */
+                color: #ffffff; /* Ensure icon color remains white on hover */
+                text-decoration: none; /* Remove underline on hover */
+            }
+
+        /* Ensures the icons are centered in the list */
+        #sidebar .components {
+            padding-left: 0;
+            text-align: center;
+        }
+
+            #sidebar .components li {
+                list-style: none; /* Remove bullet points */
+            }
+
+    </style>
+ 
+
+
+    <div id="content" class="container-fluid">
+        <div class="header">
+            <div class="menu">
+                <ul class="menu-list">
+                    <a href="/" class="logo">
+                        <img src="~/images/logo1.png" />
+                        <ul class="menu-list">
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Services">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="News">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Aboutus">About us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Room">Rooms</a>
+                            </li>
+                        </ul>
+
+                </ul>
+
+                <div class="btn-group">
+                    <a class="btn btn-primary btn-custom" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                    <a class="btn btn-secondary btn-custom" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content text-center">
+            <h1>Where Every Stay is a Story.</h1>
+            <p class="wow fadeInLeft" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">Luxurious Rooms • Panoramic Views • 24/7 facilities • Attentive Staff </p>
+        </div>
+    </div>
+
+    <script src="~/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js"></script>
+</body>
+</html>
+

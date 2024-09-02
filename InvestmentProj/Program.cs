@@ -62,6 +62,9 @@ app.UseAuthorization();
 // Define routes
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
+    pattern: "{controller=Account}/{action=AuthSelection}/{id?}");
+app.MapControllerRoute(
+        name: "availableRooms",
+        pattern: "AvailableRooms",
+        defaults: new { controller = "Booking", action = "AvailableRooms" });
 app.Run();

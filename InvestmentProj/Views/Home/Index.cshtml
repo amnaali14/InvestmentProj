@@ -1,33 +1,44 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
-  
-</head>
-<body>
-    <div class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-4">
-                <span class="d-block">Welcome To</span>
-                <span class="d-block">The Grand Royal Swiss Hotel</span>
-            </h1>
-            <p class="lead">Our hotels offer glamour and comfort that expands the imagination and cradles the spirit.</p>
-            <a href="@Url.Action("BookRoom", "Booking")" class="btn btn-primary">Book Now</a>
-         
 
-        </div>
-    </div>
-    @section Scripts {
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    }
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Datepicker</title>
+    <link rel="stylesheet" href="./css/AuthSelection.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+</head>
+
+<body>
+    <main class="container">
+        <header class="col-sm-12">
+          
+            <span>Bootstrap Calendar</span>
+        </header>
+        <section class="col-sm-12">
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+        <footer></footer>
+    </main>
+
+    <!-- JS Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
 </body>
+
 </html>

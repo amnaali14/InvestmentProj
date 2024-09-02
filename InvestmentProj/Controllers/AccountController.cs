@@ -30,7 +30,7 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-           
+
             var trimmedUsername = model.Username?.Trim().Split('@')[0];
             var result = await _signInManager.PasswordSignInAsync(trimmedUsername, model.Password!, model.RememberMe, lockoutOnFailure: false);
 
@@ -58,7 +58,10 @@ public class AccountController : Controller
 
         return View(model);
     }
-
+    public IActionResult AuthSelection()
+    {
+        return View();
+    }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -67,11 +70,11 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-      
-            var trimmedEmail = model.Email?.Trim().ToLower();
-          
 
-         
+            var trimmedEmail = model.Email?.Trim().ToLower();
+
+
+
             if (await _userManager.FindByEmailAsync(trimmedEmail) != null)
             {
                 ModelState.AddModelError(string.Empty, "Email is already in use.");
@@ -103,12 +106,12 @@ public class AccountController : Controller
     }
 
     [HttpPost]
-public async Task<IActionResult> Logout()
+    public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
-   
+
     private List<CountryCodeVM> GetCountryCodes()
     {
         var countryCodes = new List<CountryCodeVM>
@@ -172,5 +175,5 @@ public async Task<IActionResult> Logout()
 
         return countryCodes.OrderBy(c => c.Name).ToList();
     }
-  
+
 }

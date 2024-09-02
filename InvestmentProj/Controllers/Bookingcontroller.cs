@@ -1,64 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using InvestmentProj.Models; // Update this namespace to match your project
-using System;
+using InvestmentProj.Models; // Adjust to your actual namespace
+using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using InvestmentProj.Data;
-using Microsoft.AspNetCore.Identity.UI.Services; // For IEmailSender
+using IvestmentProj.Models;
 
-namespace InvestmentProj.Controllers
+public class BookingController : Controller
 {
-    public class BookingController : Controller
+    private readonly AppDbContext _context;
+
+    // Constructor to initialize the context
+    public BookingController(AppDbContext context)
     {
-        public BookingController(AppDbContext context)
+        _context = context;
+    }
+
+    // Action method to show the booking creation form
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    // Action method to handle form submission
+    [HttpPost]
+    public async Task<IActionResult> Create(Booking booking)
+    {
+        if (ModelState.IsValid)
         {
-            _context = context;
-        }
-        private readonly AppDbContext _context;
-       
-
-        [HttpGet]
-        public IActionResult BookRoom()
-        {
-            ViewBag.ShowNavbar = false;
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> BookRoom(BookRoomViewModel booking)
-        {
-            // Basic form validation
-            if (!ModelState.IsValid && booking.Checkin > booking.Checkout)
-            {
-                ModelState.AddModelError(string.Empty, "Invalid input data. Please check your inputs.");
-                return View(booking); 
-            }
-
-           
-                _context.Bookings.Add(new Booking 
-                {
-                    Name = booking.Name,
-                    Email = booking.Email,
-                    Checkin = booking.Checkin,
-                    Checkout =booking.Checkout,
-                    Adults = booking.Adults,
-                    Children = booking.Children
-                
-                });
-
+            _context.Bookings.Add(booking);
             await _context.SaveChangesAsync();
-            return RedirectToAction("BookingConfirmation");
+            return RedirectToAction(nameof(Index));
         }
-    
-        public IActionResult BookingConfirmation()
-        {
-            return View(); 
-        }
+        return View(booking);
+    }
 
-        public async Task<IActionResult> ReservationHistory()
-        {
-            var bookings = await _context.Bookings.ToListAsync();
-            return View(bookings);
-        }
+    // Action method to list all bookings
+    public IActionResult Index()
+    {
+        var bookings = _context.Bookings.ToList();
+        return View(bookings);
     }
 }

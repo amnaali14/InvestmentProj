@@ -1,0 +1,308 @@
+﻿/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap");
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #3b5998;
+    color: #333; /* Dark gray text color */
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    background: #1f2937; /* Dark gray shade */
+    height: 75px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    opacity: 0.95;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+    .logo img {
+        height: 70px;
+        transition: transform 0.3s ease;
+    }
+
+        .logo img:hover {
+            transform: scale(1.1); /* Slight zoom on hover */
+        }
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 50px;
+    }
+}
+
+/* Navigation Menu */
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+}
+
+    ul li {
+        margin: 0 20px;
+        padding: 10px 15px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #3a3f45; /* Medium gray */
+        cursor: pointer;
+        transition: color 0.3s ease, border-bottom 0.3s ease;
+        border-bottom: 2px solid transparent;
+    }
+
+        ul li:hover {
+            color: #6495ed; /* Cornflower Blue */
+            border-bottom: 2px solid #6495ed;
+        }
+
+/* Button Group */
+.btn-group {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+}
+
+.btn-custom {
+    margin-left: 15px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #f0f4f8; /* Light gray text */
+    background-color: transparent;
+    border: 2px solid #6495ed;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    .btn-custom:first-of-type {
+        margin-right: 20px;
+    }
+
+    .btn-custom:hover {
+        color: #1f2937; /* Dark gray */
+        background-color: #6495ed;
+    }
+
+/* Content Styling */
+.content.text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 75px);
+    padding-top: 75px; /* Adjust for fixed header */
+    color: #333;
+    position: relative;
+    animation: fadeInUp 1s ease-in-out;
+    font-weight: 700; /* Thicker font weight */
+}
+
+    .content.text-center h1 {
+        font-size: 4em; /* Increased font size for prominence */
+        margin-bottom: 20px;
+        color: #333;
+        font-weight: 700; /* Thicker font weight */
+    }
+
+    .content.text-center .landing-par {
+        font-size: 2em; /* Larger font size */
+        margin-top: 10px;
+        color: #555; /* Darker gray */
+        font-weight: 500; /* Slightly thicker font weight */
+    }
+
+hr {
+    width: 50%;
+    border: 1px solid #6495ed; /* Cornflower Blue */
+    margin: 20px 0;
+}
+
+/* Sidebar */
+#sidebar {
+    position: fixed;
+    left: 0; /* Always visible */
+    bottom: 10px; /* Positioned slightly above the bottom of the viewport */
+    width: 70px; /* Slightly wider for visibility */
+    height: auto;
+    padding: 15px 0; /* Padding for a compact look */
+    background-color: rgba(100, 149, 237, 0.8); /* Cornflower Blue with transparency */
+    border-radius: 0 5px 5px 0;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow for visibility */
+    z-index: 1000;
+    transition: width 0.3s ease-in-out;
+}
+
+    #sidebar:hover {
+        width: 80px; /* Slightly wider on hover */
+        box-shadow: 6px 0 16px rgba(0, 0, 0, 0.4); /* More shadow on hover */
+    }
+
+    #sidebar ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: cornflowerblue;
+    }
+
+        #sidebar ul li {
+            margin: 10px 0; /* Reduced spacing for a more compact look */
+        }
+
+            #sidebar ul li a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px; /* Fit icons neatly */
+                height: 50px;
+                background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent */
+                border-radius: 50%;
+                transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+                color: #f0f4f8; /* Default icon color */
+                box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            }
+
+                #sidebar ul li a:hover {
+                    background-color: #ffffff; /* White background on hover */
+                    color: #1f2937; /* Dark gray */
+                    transform: scale(1.1); /* Slightly enlarge on hover */
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+                }
+
+    /* Connect with Us */
+    #sidebar .connect-with-us {
+        font-size: 14px; /* Smaller font size */
+        color: #f0f4f8; /* Light gray text color */
+        text-align: center;
+        margin-bottom: 10px; /* Spacing from the icons */
+    }
+
+    /* Facebook Icon */
+    #sidebar .facebook a {
+        color: #3b5998; /* Facebook blue */
+    }
+
+        #sidebar .facebook a:hover {
+            color: #1f2937; /* Dark gray on hover */
+            background-color: #e9ebee; /* Facebook light gray background on hover */
+        }
+
+    /* Instagram Icon */
+    #sidebar .instagram a {
+        color: #c13584; /* Instagram pink */
+    }
+
+        #sidebar .instagram a:hover {
+            color: #1f2937; /* Dark gray on hover */
+            background-color: #f8f8f8; /* Instagram light gray background on hover */
+        }
+
+    /* Call Icon */
+    #sidebar .call a {
+        color: #34b7f1; /* Call blue */
+    }
+
+        #sidebar .call a:hover {
+            color: #1f2937; /* Dark gray on hover */
+            background-color: #e5f1f9; /* Call light blue background on hover */
+        }
+
+/* Footer */
+footer, .footer, .site-footer, .page-footer {
+    display: none !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeInUp {
+    animation: fadeInUp 1s ease-in-out forwards;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+    .header {
+        height: 64px;
+    }
+
+    .content.text-center {
+        padding-top: 64px;
+    }
+
+        .content.text-center h1 {
+            font-size: 2em;
+        }
+
+        .content.text-center .landing-par {
+            font-size: 1.5em;
+        }
+
+    .btn-group {
+        display: none;
+    }
+}
+
+/* SVG Line Animation */
+.menu-item {
+    position: relative;
+    padding: 10px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+    .menu-item:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #6495ed;
+        transition: width 0.3s ease;
+    }
+
+    .menu-item:hover:after {
+        width: 100%;
+    }

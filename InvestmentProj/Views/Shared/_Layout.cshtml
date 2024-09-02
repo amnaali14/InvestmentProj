@@ -6,58 +6,13 @@
     <title>@ViewData["Title"] - Swiss International</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true" />
-    <link rel="stylesheet" type="text/css" href="~/css/Aboutus.css" />
+    
     @RenderSection("Styles", required: false)
 
     <!-- Include Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 </head>
 <body class="light-mode">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Swiss International</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="News">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Aboutus">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Room">Room</a>
-                    </li>
-                </ul>
-                <div class="d-flex align-items-center">
-                    <!-- Light/Dark Mode Toggle -->
-                    <label class="theme-switch">
-                        <input type="checkbox" id="theme-toggle">
-                        <span class="slider round"></span>
-                    </label>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <form asp-action="Logout" asp-controller="Account" method="post" class="m-0">
-                            <button type="submit" class="btn btn-secondary">Logout</button>
-                        </form>
-                    }
-                    else
-                    {
-                        <a class="btn btn-primary ms-2" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                        <a class="btn btn-secondary ms-2" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                    }
-                </div>
-            </div>
-        </div>
-    </nav>
 
     <div class="wrapper">
         <div class="main-content">
