@@ -1,69 +1,157 @@
-﻿
-@{
-    ViewData["Title"] = "Gallery";
-}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - My Website</title>
-
-    <link rel="stylesheet" href="~/css/Gallery.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
-</head>
-<body>
-    <div class="gallery-container">
-        <h2>Gallery</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-             
-                    <img src="https://swissinternationalhotels.com/wp-content/uploads/2022/02/604A4638-1-scaled.jpg" alt="Royal Swiss Hotel" class="img-fluid">
-                <h3>Royal Swiss Lahore</h3>
-                <p>Royal Swiss Lahore is a brand-new state-of-the-art international luxury hotel in Pakistan.</p>
+﻿<!-- Banner Start -->
+<section class="banner overflow-hidden">
+    <div class="container">
+        <div class="banner-box">
+            <h1 id="headingBig">D</h1>
+            <div class="banner-text">
+                <h2 id="headingSmall">Design a Space <br> You Love.</h2>
+                <h3 id="headingText">Let’s bring your creative <br> imagination to reality.</h3>
             </div>
-            <div class="gallery-item">
-                <div class="image-container">
-                    <img src="https://th.bing.com/th/id/R.3d226cedfada4cbcd45ced5897f335c5?rik=%2bndB7j5pQp2%2fOA&pid=ImgRaw&r=0.jpg" alt="Royal Swiss Landscape" class="img-fluid">
+            <div class="row gx-0">
+                <div class="col-md-6 col-xxl-7 ms-auto">
+                    <div class="banner-img" id="bannerBigimg">
+                        <script src="~/js/site.js"></script>
+                        <img src="https://aeontrisl.pk/wp-content/uploads/2023/08/Serene-Heights-Highlights.jpg" class="img-fluid" alt="Image">
+                    </div>
                 </div>
-
-                <h3>Luxurious lounge</h3>
-                <p>Shown is the luxurious lounge at Royal Swiss Lahore.</p>
-            </div>
-            <div class="gallery-item">
-                <div class="image-container">
-                   
-                        <img src="https://th.bing.com/th/id/OIP.Gte6SHWl6JAA4J90muMlLgHaE6?rs=1&pid=ImgDetMain.jpg" alt="Royal Swiss Hotel" class="img-fluid">
-                    </>
-
-                </div>
-                <h3>Deluxe Room</h3>
-                <p>Our Deluxe Rooms offer a perfect blend of elegance and comfort, featuring plush bedding, modern amenities, and stunning city views. Unwind in a serene space designed to provide the ultimate relaxation experience.</p>
             </div>
         </div>
-        <div class="gallery-item">
-            <div class="image-container">
-                <img src="https://swissinternationalhotels.com/wp-content/uploads/2022/02/Pool-2-scaled.jpg" alt="Royal Swiss Hotel Swimming Pool" class="img-fluid">
+    </div>
+</section>
+<!-- Banner End -->
+<!-- Company Start -->
+<section class="company-section white-bg position-relative overflow-hidden">
+    <h2 class="title text-center">Company</h2>
+    <div class="container">
+        <div class="row align-items-stretch">
+            <div class="col-md-6 align-self-center pb-4 pb-md-5 pb-lg-0">
+                <div class="py-lg-5" id="compDescription">
+                    <div class="pb-md-3 paragraph">
+                        <p>We are proud of our history, our esteemed faculty, and our dedicated professionals, who, year after year, provide the environment and support to help our students realize their dreams.</p>
+                        <p>School of Interior Design is a private, not-for-profit college devoted to the design of the interior environment. Our guiding principle is that the successful design of an interior space improves human welfare, and that the interior design profession assumes an important role in ensuring that spaces are beautiful, functional, healthy, safe, and built in a socially and environmentally conscientious way.</p>
+                    </div>
+                </div>
             </div>
-
-            <h3>The Oasis: Our Exquisite Swimming Pool</h3>
-            <p>
-                Escape to tranquility at Royal Swiss's exquisite swimming pool, an oasis of relaxation and leisure. Our pool area is designed to provide a serene environment where guests can unwind and rejuvenate.
-            </p>
-
-        
+            <div class="col-md-6">
+                <div class="compy-box mt-4 my-md-0 position-relative">
+                    <img src="https://sereneheightsnathiagali.com/wp-content/uploads/2024/02/s11.png" class="img-fluid" alt="Company">
+                </div>
+            </div>
         </div>
     </div>
-
-    
+</section>
+<!-- Company End -->
+<!-- Designers Start -->
+<section class="designer-section black-bg theme-dark position-relative">
+    <h2 class="title text-center">Designers</h2>
+    <div class="container">
+        <div class="row gx-4 align-items-stretch">
+            <div class="col-md-6">
+                <div class="designer-box position-relative">
+                    <div class="team-member team1">
+                        <img src="https://tse3.mm.bing.net/th?id=OIP.5FM29zw5E-2tJqjHNTaxfQAAAA&pid=Api&P=0&h=220" class="img-fluid" alt="Team Member">
+                    </div>
+                    <div class="team-member team2">
+                        <img src="https://sereneheightsnathiagali.com/wp-content/uploads/2024/04/Artboard-2.jpg" class="img-fluid" alt="Team Member">
+                    </div>
+                    <div class="team-member team3">
+                        <img src="https://sereneheightsnathiagali.com/wp-content/uploads/2021/12/5.jpg" class="img-fluid" alt="Team Member">
+                    </div>
+                    <div class="box-border"></div>
+                </div>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <div class="py-4 py-lg-5" id="designDescription">
+                    <div class="pb-3 paragraph">
+                        <p>Chartered by the Board of Regents of the University of the State of TX in 1920, SID is authorized by the Board of Regents to confer the Basic Interior Design certificate (on-site and online), the degrees of Associate in Applied Science in Interior Design (on-site and online), Bachelor of Fine Arts in Interior Design, Master of Fine Arts in Interior Design, Master of Professional Studies in Lighting Design, and Master of Professional Studies in Sustainable Interior Environments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
+<!-- Designers End -->
+<!-- Projects Start -->
+<section class="projects-section white-bg position-relative overflow-hidden">
+    <h2 class="title text-center">Projects</h2>
+    <div class="container">
+        <div class="row align-items-stretch overflow-hidden gy-1 gy-md-0 gx-1 gx-md-3 gx-lg-4">
+            <div class="col-md-9">
+                <div class="row g-1 g-md-3 g-lg-4 overflow-hidden">
+                    <div class="col-8">
+                        <div class="project-box pbox-left">
+                            <img src="https://aeontrisl.pk/wp-content/uploads/2023/08/Serene-Heights-Nathia-02.jpg" class="img-fluid" alt="Project">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="project-box pbox-right">
+                            <img src="https://aeontrisl.pk/wp-content/uploads/2023/08/Serene-Heights-Nathia-01.jpg" class="img-fluid" alt="Project">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="project-box pbox-left">
+                            <img src="https://aeontrisl.pk/wp-content/uploads/2023/08/Serene-Heights-Nathia-04.jpg" class="img-fluid" alt="Project">
+                        </div>
+                    </div>
+                    <div class="col-8 overflow-hidden">
+                        <div class="project-box project-content">
+                            <img src="https://aeontrisl.pk/wp-content/uploads/2023/08/Serene-Heights-Nathia-03.jpg" class="img-fluid bg-img" alt="Project">
+                            <div class="row align-items-center h-100">
+                                <div class="col-10 col-md-8 col-xxl-7 ms-auto">
+                                    <p>We celebrated our 100th anniversary with a series of events and initiatives that paid tribute to our rich history, our role in the development of the field, and the great opportunities for the future. But we're only just beginning. SID's future is exciting, and we're looking forward to the next 100 years.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="project-box big pbox-right">
+                    <img src="https://aeontrisl.pk/wp-content/uploads/2023/08/Serene-Heights-Nathia-06.jpg" class="img-fluid" alt="Project">
+                </div>
+            </div>
+        </div>
     </div>
-
-
-    <script src="~/js/site.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"</script>>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-    </html>
+</section>
+<!-- Projects End -->
+<!-- Gallery Start -->
+<section class="gallery-section white-bg position-relative overflow-hidden">
+    <h2 class="title text-center">Gallery</h2>
+    <div class="container">
+        <!-- Add your gallery content here -->
+    </div>
+</section>
+<!-- Gallery End -->
+<!-- Testimonials Start -->
+<section class="testimonial-section white-bg position-relative overflow-hidden">
+    <h2 class="title text-center">Testimonials</h2>
+    <div class="container">
+        <div class="row g-0 left-row">
+            <div class="col-md-6">
+                <div class="content border-end-0">
+                    <h3>Bertie Norton</h3>
+                    <p>"Aenean pulvinar dui ornare, feugiat lorem non, ultrices justo. Quam elit ultrices urna, eget eleifend arcu risus id metus. Maecenas ex enim, mattis eu velit vitae, blandit mattis sapien. Sed aliquam leo et semper vestibulum."</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="img-box">
+                    <img src="https://www.yudiz.com/codepen/interior-design/person-01.jpg" class="img-fluid" alt="person">
+                </div>
+            </div>
+        </div>
+        <div class="row g-0 reverse-row right-row">
+            <div class="col-md-6">
+                <div class="img-box">
+                    <img src="https://aeontrisl.pk/wp-content/uploads/2023/08/Serene-Heights-Nathia-07.jpg" class="img-fluid" alt="person">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="content border-start-0">
+                    <h3>Mike Perry</h3>
+                    <p>"Aenean pulvinar dui ornare, feugiat lorem non, ultrices justo. Quam elit ultrices urna, eget eleifend arcu risus id metus. Maecenas ex enim, mattis eu velit vitae, blandit mattis sapien. Sed aliquam leo et semper vestibulum."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testimonials End -->

@@ -1,26 +1,24 @@
-﻿using System;  // For common data types like DateTime, int, etc.
-using System.ComponentModel.DataAnnotations;  // For attributes like [Key], [Required], etc.
-using System.ComponentModel.DataAnnotations.Schema;  // For attributes like [Table], [ForeignKey], etc.
+﻿using InvestmentProj.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace InvestmentProj.Models  // Replace with your actual namespace
+public class Room
 {
-    public class Room
-    {
-        [Key]  // Primary key attribute
-        public int RoomId { get; set; }
+    [Key]
+    public int RoomID { get; set; }
 
-        [Required]  // Makes the field required (non-nullable)
-        [StringLength(100)]  // Limits the length of the string
-        public string RoomType { get; set; }
+    [Required]
+    [StringLength(100)]
+    public string Description { get; set; }
 
-        public string Status { get; set; }
+    [Required]
+    [Range(0, 99999)]
+    public decimal Price { get; set; }  // Use decimal
 
-        [Column(TypeName = "decimal(18,2)")]  // Specifies the SQL data type
-        public decimal Price { get; set; }
+    [Range(1, 10)]
+    public int Adults { get; set; }
 
-        public int Capacity { get; set; }
+    [Range(0, 10)]
+    public int Children { get; set; }
 
-        public string Description { get; set; }
-        public string isAvailable { get; set; }
-    }
+    public List<Booking> Bookings { get; set; } // Enable bookings for this room
 }

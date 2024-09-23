@@ -139,5 +139,48 @@ span {
     padding-left: 4px;
     font-size: 18px;
 }
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center logo horizontally */
+    padding: 10px 50px; /* Increase padding for wider navbar */
+    background: CornflowerBlue; /* Cornflower Blue background */
+    color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
 
+.navbar .logo img {
+    height: 50px; /* Adjust as needed */
+    width: auto;
+}
+
+.login-card {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-btn {
+    background-color: #0078F0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .login-btn:hover {
+        background-color: #0056b3;
+    }
+
+.register-link a {
+    color: #0078F0;
+}
+
+    .register-link a:hover {
+        text-decoration: underline;
+    }
 </style >

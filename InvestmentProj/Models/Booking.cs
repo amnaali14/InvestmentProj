@@ -1,37 +1,33 @@
 ﻿using InvestmentProj.Models;
-using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace IvestmentProj.Models
+public class Booking
 {
-    public class Booking
-    {
-        [Key]
-        public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
 
-        [Required]
-        public int RoomId { get; set; }
+    [Required]
+    public DateTime CheckInDate { get; set; }
 
-        public Room Room { get; set; } // Navigation property to Room
+    [Required]
+    public DateTime CheckOutDate { get; set; }
 
-        [Required]
-        public DateTime CheckInDate { get; set; }
+    [Range(1, 10)]
+    public int NumberOfPerson { get; set; }
 
-        [Required]
-        public DateTime CheckOutDate { get; set; }
+    [Required]
+    [Range(0, 99999)]
+    public decimal TotalPrice { get; set; }  
 
-        [Required]
-        [StringLength(100)]
-        public string CustomerName { get; set; }
+    [Required]
+    [StringLength(100)]
+    public string Name { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string CustomerEmail { get; set; }
+    public AppUser User { get; set; }  
 
-        public string PhoneNumber { get; set; }
+    [Required]
+    public int RoomId { get; set; }
 
-        public int NumberOfAdults { get; set; }
-
-        public int NumberOfChildren { get; set; }
-    }
+    [Required]
+    public Room Room { get; set; }
 }

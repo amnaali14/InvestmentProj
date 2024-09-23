@@ -1,43 +1,89 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using InvestmentProj.Models; // Adjust to your actual namespace
-using System.Linq;
-using System.Threading.Tasks;
-using InvestmentProj.Data;
-using IvestmentProj.Models;
+﻿using InvestmentProj.Data;
+using Microsoft.AspNetCore.Mvc;
 
 public class BookingController : Controller
 {
     private readonly AppDbContext _context;
 
-    // Constructor to initialize the context
     public BookingController(AppDbContext context)
     {
         _context = context;
     }
 
-    // Action method to show the booking creation form
-    public IActionResult Create()
+    
+    [HttpGet]
+    [Route("booking/bookroom")] 
+    public IActionResult BookRoom()
     {
+  
         return View();
     }
 
-    // Action method to handle form submission
+ 
+    [HttpGet]
+    [Route("booking/bookroom/{roomId}")]
+    public IActionResult BookRoom(int roomId)
+    {
+        var room = _context.Rooms.Find(roomId);  
+        if (room == null)
+        {
+            return NotFound(); 
+        }
+        var model = new BookingVM
+        {
+            RoomID = room.RoomID,
+            RoomDescription = room.Description,
+            RoomPrice = room.Price 
+        };
+
+
+        return View(model);
+            
+         
+    }
+
+  
+
+    // POST: Handle form submission
     [HttpPost]
-    public async Task<IActionResult> Create(Booking booking)
+    public IActionResult BookRoom(BookingVM model)
     {
         if (ModelState.IsValid)
         {
+            var room = _context.Rooms.Find(model.RoomID);
+            if (room == null)
+            {
+                ModelState.AddModelError("", "Room not found.");
+                return View(model);
+            }
+
+            var booking = new Booking
+            {
+                RoomId = model.RoomID,
+                CheckInDate = model.CheckInDate,
+                CheckOutDate = model.CheckOutDate,
+                NumberOfPerson = model.NumberOfPerson,
+                Name = model.Name,
+                TotalPrice = model.TotalPrice,
+                Room = room // Assign room here after the check
+            };
+
             _context.Bookings.Add(booking);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            _context.SaveChanges();
+
+
+            _context.Bookings.Add(booking);
+            _context.SaveChanges();
+
+            return RedirectToAction("Confirmation");
         }
-        return View(booking);
+
+        return View(model); // Return the view with validation errors
     }
 
-    // Action method to list all bookings
-    public IActionResult Index()
+    // Confirmation View
+    public IActionResult Confirmation()
     {
-        var bookings = _context.Bookings.ToList();
-        return View(bookings);
+        return View();
     }
 }

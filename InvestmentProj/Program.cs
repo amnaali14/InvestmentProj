@@ -59,12 +59,23 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Define routes
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Account}/{action=AuthSelection}/{id?}");
-app.MapControllerRoute(
-        name: "availableRooms",
-        pattern: "AvailableRooms",
-        defaults: new { controller = "Booking", action = "AvailableRooms" });
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Account}/{action=AuthSelection}/{id?}");
+
+    endpoints.MapControllerRoute(
+    name: "authenticated",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    // Route for the BookRoom page
+    endpoints.MapControllerRoute(
+        name: "BookRoom",
+        pattern: "{controller=Booking}/{action=BookRoom}/{id?}");
+
+});
+
+
 app.Run();

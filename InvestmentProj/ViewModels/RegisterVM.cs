@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using InvestmentProj.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace InvestmentProj.ViewModels
@@ -10,7 +11,7 @@ namespace InvestmentProj.ViewModels
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Invalid email format.")]
-        [EmailDomainValidation("gmail.com", "hotmail.com", "yahoo.com")] // Add allowed domains here
+        [EmailDomainValidation("gmail.com", "hotmail.com", "yahoo.com")]
         public string? Email { get; set; }
 
         [Required(ErrorMessage = "Country code is required.")]
@@ -35,8 +36,8 @@ namespace InvestmentProj.ViewModels
 
         [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
-
-        // List of country codes for the dropdown
+        public List<Booking> Bookings { get; set; }
+        
         public List<CountryCodeVM> CountryCodes { get; set; } = new List<CountryCodeVM>
         {
             new CountryCodeVM { Code = "+1", Name = "United States" },

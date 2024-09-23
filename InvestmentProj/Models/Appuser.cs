@@ -11,11 +11,8 @@ namespace InvestmentProj.Models
         public int MyProperty { get; set; }
 
         public string? Name { get; set; }
-        
+
         public string? Address { get; set; }
 
-
-
-        // PhoneNumber is inherited from IdentityUser, so no need to declare it again.
     }
 }
