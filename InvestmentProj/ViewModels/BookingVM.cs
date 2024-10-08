@@ -2,6 +2,7 @@
 
 public class BookingVM
 {
+    public string Name { get; set; }
     public int RoomID { get; set; }
     public string RoomDescription { get; set; }
     public decimal RoomPrice { get; set; }
@@ -14,12 +15,16 @@ public class BookingVM
 
     [Required]
     [Range(1, 10)]
-    public int NumberOfPerson { get; set; }
+    public int NumberofAdults { get; set; }
+
+    [Required, Range(1, 10)]
+
+    public int NumberofChildren { get; set; }  
 
     [Required]
     [StringLength(100)]
-    public string Name { get; set; }
 
+    public string ConfirmationMessage { get; set; }
     [Required]
     public decimal TotalPrice { get; set; }
 }

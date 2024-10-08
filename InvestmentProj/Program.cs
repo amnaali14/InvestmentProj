@@ -4,15 +4,15 @@ using InvestmentProj.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyDatabase")));
 
-// Add Identity services
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
-    // Password settings
+    
     options.Password.RequiredUniqueChars = 0;
     options.Password.RequireUppercase = false;
     options.Password.RequiredLength = 8;
@@ -20,7 +20,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.Password.RequireLowercase = false;
 
     // Lockout settings
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(45);
     options.Lockout.MaxFailedAccessAttempts = 5;
     options.Lockout.AllowedForNewUsers = true;
 
@@ -31,20 +31,34 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
 
-// Add authentication and cookie configuration
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Cookies are only sent over HTTPS
+    options.LoginPath = "/Account/Login";
+    options.SlidingExpiration = true;
+    options.ExpireTimeSpan = TimeSpan.FromDays(30); // Adjust as needed
+});
+
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
     {
         options.LoginPath = "/Account/Login";
         options.LogoutPath = "/Account/Logout";
-        options.AccessDeniedPath = "/Account/AccessDenied"; // Optional: Define if you have an access denied page
+        options.AccessDeniedPath = "/Account/AccessDenied"; 
     });
 
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddAuthentication().AddFacebook(opt =>
+{
+    opt.ClientId = "456359560758919";
+    opt.ClientSecret = "556fda2d749341e47683eeae9aeef950";
+}
+);
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -70,7 +84,7 @@ app.UseEndpoints(endpoints =>
     name: "authenticated",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-    // Route for the BookRoom page
+ 
     endpoints.MapControllerRoute(
         name: "BookRoom",
         pattern: "{controller=Booking}/{action=BookRoom}/{id?}");

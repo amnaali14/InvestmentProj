@@ -332,3 +332,15 @@ gsap.to(".contact-box, .contact-border", {
         markers: false
     }
 });
+
+    const togglePassword = document.querySelector("#togglePassword");
+    const passwordInput = document.querySelector("#password");
+
+    togglePassword.addEventListener("click", function () {
+            // Toggle the type attribute
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+
+    // Change the icon (optional)
+    this.textContent = type === "password" ? "👁️" : "🙈";
+        });

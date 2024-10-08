@@ -29,24 +29,8 @@ body {
         height: 100%;
         background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     }
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #333;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-.content-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding-top: 60px; /* Adjust this value to account for the height of the navbar */
-    box-sizing: border-box;
-}
+
 .login-card {
     background-color: rgba(255, 255, 255, 0.8);
     width: 400px;
@@ -164,17 +148,19 @@ span {
 }
 
 .login-btn {
-    background-color: #0078F0;
-    color: white;
+    background-color: #6495ED; /* Cornflower Blue */
+    color: white; /* Text color remains white */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px; /* Optional: Set font size for better visibility */
 }
 
     .login-btn:hover {
-        background-color: #0056b3;
+        background-color: #0056b3; /* Optional: Change hover color */
     }
+
 
 .register-link a {
     color: #0078F0;
@@ -183,4 +169,6 @@ span {
     .register-link a:hover {
         text-decoration: underline;
     }
+
+
 </style >

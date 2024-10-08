@@ -1,14 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
     var userName = User.Identity.IsAuthenticated ? User.Identity.Name : "Guest";
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - Swiss International</title>
+    <title>@ViewData["Title"] - Serene Heights</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -40,7 +42,7 @@
 
     <div class="hero-section">
         <div class="container text-center">
-            <h1 class="display-4">Welcome to SERENE!</h1>
+            <h1 class="display-4"></h1>
             <main>
                 @if (User.Identity.IsAuthenticated)
                 {

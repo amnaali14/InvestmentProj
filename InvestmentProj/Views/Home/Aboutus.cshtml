@@ -3,62 +3,15 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" type="text/css" href="~/css/aboutus.css" />
 
-      <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" type="text/css" href="~/css/Aboutus.css" />
 </head>
-<style>
-    body {
-    font-family: 'Public Sans', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
 
-header h1 {
-    text-align: center;
-    padding: 20px;
-    font-size: 36px;
-    color: #0078F0;
-}
-
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 40px;
-}
-
-.about-section img, .story-section img, .activities-section img, .luxury-section img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #0078F0;
-    color: white;
-}
-</style>
 <body>
     <header>
         <h1>@ViewData["Title"]</h1>
@@ -68,8 +21,8 @@ footer {
         <section class="about-section">
             <h2>Welcome to Serene Heights</h2>
             <p>
-                Nestled in the heart of Nathia Gali, Serene Heights Hotel & Resort offers a peaceful escape from the hustle of city life. 
-                Whether you're looking for relaxation or adventure, our resort caters to all. 
+                Nestled in the heart of Nathia Gali, Serene Heights Hotel & Resort offers a peaceful escape from the hustle of city life.
+                Whether you're looking for relaxation or adventure, our resort caters to all.
                 We pride ourselves on providing luxury with a personal touch, allowing you to enjoy the breathtaking views of the valley.
             </p>
             <img src="~/images/serene-heights-hotel.jpg" alt="Serene Heights Hotel View" />
@@ -78,8 +31,8 @@ footer {
         <section class="story-section">
             <h2>Our Story</h2>
             <p>
-                Established in [Year], Serene Heights has quickly become a premier destination in Nathia Gali, 
-                offering state-of-the-art facilities like our rooftop restaurant, luxury suites, and a heated swimming pool. 
+                Established in [Year], Serene Heights has quickly become a premier destination in Nathia Gali,
+                offering state-of-the-art facilities like our rooftop restaurant, luxury suites, and a heated swimming pool.
                 We are dedicated to ensuring that every guest enjoys an unforgettable experience.
             </p>
             <img src="~/images/hotel-interior.jpg" alt="Hotel Interior" />
@@ -88,8 +41,8 @@ footer {
         <section class="activities-section">
             <h2>Experience Nature & Adventure</h2>
             <p>
-                Located amidst the lush green mountains, Serene Heights is the perfect getaway for nature lovers. 
-                Guests can indulge in various activities, including hiking, rock climbing, and archery. 
+                Located amidst the lush green mountains, Serene Heights is the perfect getaway for nature lovers.
+                Guests can indulge in various activities, including hiking, rock climbing, and archery.
                 The scenic trails to nearby Mushkpuri and Miranjani peaks offer some of the best trekking experiences in the region.
             </p>
             <img src="~/images/nathia-gali-hiking.jpg" alt="Hiking Trail Nathia Gali" />
@@ -98,8 +51,8 @@ footer {
         <section class="luxury-section">
             <h2>Luxury Redefined</h2>
             <p>
-                Our hotel features spacious rooms with modern designs, large windows offering panoramic views, 
-                and top-class amenities including a gym, sauna, and spa services. Whether you're here for business 
+                Our hotel features spacious rooms with modern designs, large windows offering panoramic views,
+                and top-class amenities including a gym, sauna, and spa services. Whether you're here for business
                 or leisure, our luxurious accommodations guarantee comfort and relaxation.
             </p>
             <img src="~/images/luxury-suite.jpg" alt="Luxury Suite" />
@@ -107,12 +60,15 @@ footer {
 
         <section class="contact-info">
             <h2>Contact Us</h2>
-            <p>If you have any inquiries or wish to book a stay, feel free to <a href="~/Contact/Index">reach out to us</a>. We're here to make your visit unforgettable.</p>
+            <p>
+                If you have any inquiries or wish to book a stay, feel free to <a href="~/Contact/Index">reach out to us</a>.
+                We're here to make your visit unforgettable.
+            </p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; [2000] [Serene Heights Hotel & Resort]. All rights reserved.</p>
+        <p>&copy; [2000] Serene Heights Hotel & Resort. All rights reserved.</p>
     </footer>
 </body>
 </html>

@@ -12,8 +12,16 @@ public class Booking
     [Required]
     public DateTime CheckOutDate { get; set; }
 
+
+    [Required]
     [Range(1, 10)]
-    public int NumberOfPerson { get; set; }
+    public int NumberofAdults { get; set; }
+
+    [Required, Range(1, 10)]
+
+    public int NumberofChildren { get; set; }
+
+   
 
     [Required]
     [Range(0, 99999)]
@@ -27,7 +35,7 @@ public class Booking
 
     [Required]
     public int RoomId { get; set; }
-
+    
     [Required]
     public Room Room { get; set; }
 }

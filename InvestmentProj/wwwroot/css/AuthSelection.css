@@ -1,13 +1,21 @@
-﻿/* Import Google Fonts */
+﻿
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap");
+/* google fonts for font styling */
 
-html, body {
+html, body {                                                         
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #3b5998;
-    color: #333; /* Dark gray text color */
+    color: #333; 
+}
+
+{
+    background-image: url('/images/bg.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
 }
 .rms-image {
     line-height: 1.15;
@@ -93,7 +101,40 @@ ul {
             border-bottom: 2px solid #6495ed;
         }
 
-/* Button Group */
+#sidebar .components li a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin: 10px 0;
+    color: #ffffff;
+    font-size: 24px;
+    text-align: center;
+    background-color: #343a40;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+#sidebar .components li a:hover {
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#sidebar .components {
+    padding-left: 0;
+    text-align: center;
+}
+
+    #sidebar .components li {
+        list-style: none;
+    }
+
+.header .btn-group .btn {
+    margin-left: 10px;
+}
+
+
 .btn-group {
     display: flex;
     align-items: center;
@@ -294,6 +335,7 @@ footer, .footer, .site-footer, .page-footer {
         display: none;
     }
 }
+
 
 /* SVG Line Animation */
 .menu-item {

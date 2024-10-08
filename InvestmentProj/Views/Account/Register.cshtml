@@ -12,70 +12,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
     <link rel="stylesheet" href="~/css/Register.css" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/register.js"></script>
 </head>
 <body>
-    <div class="register-card">
-        <h1 class="text-uppercase">Register</h1>
-        <form asp-action="Register">
-            <div asp-validation-summary="ModelOnly" class="text-danger text-start"></div>
+    <div class="container">
+        <div class="register-card">
+            <h1 class="text-uppercase">Register</h1>
 
-            <div class="input-box">
-                <input asp-for="Name" placeholder="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="input-box">
-                <input asp-for="Email" placeholder="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+            <form asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger text-start"></div>
 
-            <div class="input-box phone-number-group">
-                <select asp-for="CountryCode" class="form-control country-code-dropdown">
-                 
+                <div class="input-box">
+                    <input asp-for="Name" placeholder="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="input-box">
+                    <input asp-for="Email" placeholder="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="input-box phone-number-group">
+                    <select asp-for="CountryCode" class="form-control country-code-dropdown">
                         <option value="">Select country code</option>
-                      
-
-                    @foreach (var countryCode in Model.CountryCodes)
-                    {
-                        <option value="@countryCode.Code">@countryCode.Name (@countryCode.Code)</option>
-                    }
-                </select>
-                <input asp-for="PhoneNumber" placeholder="Phone Number" class="form-control phone-number-input" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-
-            <div class="input-box">
-                <input asp-for="Password" type="password" placeholder="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="input-box">
-                <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label">Gender</label>
-                <div class="form-check form-check-inline">
-                    <input type="radio" asp-for="Gender" value="Female" class="form-check-input" />
-                    <label class="form-check-label">Female</label>
+                        @foreach (var countryCode in Model.CountryCodes)
+                        {
+                            <option value="@countryCode.Code">@countryCode.Name (@countryCode.Code)</option>
+                        }
+                    </select>
+                    <input asp-for="PhoneNumber" placeholder="Phone Number" class="form-control phone-number-input" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input type="radio" asp-for="Gender" value="Male" class="form-check-input" />
-                    <label class="form-check-label">Male</label>
-                </div>
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="input-box">
-                <textarea asp-for="Address" class="form-control address-textarea" placeholder="Address"></textarea>
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <input type="submit" value="Register" class="register-btn" />
-            </div>
-            <div class="form-group text-center">
-                <a asp-action="Login" class="login-link">Already have an account? Login here</a>
-            </div>
-        </form>
+                <div class="input-box">
+                    <input asp-for="Password" type="password" placeholder="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="input-box">
+                    <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label">Gender</label>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" asp-for="Gender" value="Female" class="form-check-input" />
+                        <label class="form-check-label">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" asp-for="Gender" value="Male" class="form-check-input" />
+                        <label class="form-check-label">Male</label>
+                    </div>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+
+                <div class="input-box">
+                    <textarea asp-for="Address" class="form-control address-textarea" placeholder="Address"></textarea>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Register" class="register-btn" />
+                </div>
+
+                <div class="form-group text-center">
+                    <a asp-action="Login" class="login-link">Already have an account? Login here</a>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <style>
+        .field-icon {
+            float: right;
+            margin-left: -25px;
+            margin-top: -25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            padding-top: 50px;
+            margin: auto;
+        }
+    </style>
 
     <script src="/lib/jquery/dist/jquery.js"></script>
     <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>

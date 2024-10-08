@@ -7,12 +7,17 @@
     <UserSecretsId>72202d14-6089-4601-9d3c-223adfdd1631</UserSecretsId>
   </PropertyGroup>
 
-	
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\aboutus.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\images\bg.jpg" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Bootstrap.v3.Datetimepicker" Version="4.17.49" />
     <PackageReference Include="Bootstrap.v3.Datetimepicker.CSS" Version="4.17.49" />
     <PackageReference Include="jQuery-datetimepicker" Version="2.4.5" />
     <PackageReference Include="jQuery.UI.Combined" Version="1.13.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.8" />
@@ -26,6 +31,9 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
+    <PackageReference Include="RazorPay.Core" Version="1.0.2" />
+    <PackageReference Include="Stripe.net" Version="45.14.0" />
   </ItemGroup>
 
 	

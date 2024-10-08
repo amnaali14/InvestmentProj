@@ -19,33 +19,49 @@ namespace InvestmentProj.Controllers
             return View();
         }
 
-        public IActionResult Aboutus()
-        {
-            return View();
-        }
-     
-
-        public IActionResult Gallery()
-        {
-            return View();
-        }
-
-        public IActionResult News()
-        {
-            return View();
-        }
-
-        // Specialized actions
         public IActionResult AuthSelection()
         {
             return View();
         }
 
-        public IActionResult Room()
+        // Action method for Gallery page
+        [AllowAnonymous]
+        public IActionResult Gallery()
+        {
+            return View();
+        }
+        [AllowAnonymous]
+        public IActionResult News()
         {
             return View();
         }
 
+
+        [AllowAnonymous]
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        // Action method for Rooms page
+        public IActionResult Rooms()
+        {
+            return View();
+        }
+
+        // Action method for Hotels page
+
+
+        [AllowAnonymous]
+        // Action method for Services page
+        public IActionResult Services()
+        {
+            return View();
+        }
+
+      
+    
         // Error handling
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
