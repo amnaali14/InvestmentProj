@@ -1,9 +1,10 @@
-﻿@{
+﻿@model List<InvestmentProj.ViewModels.RoomVM>
+
+@{
     ViewData["Title"] = "Home Page";
+    var userName = User?.Identity?.IsAuthenticated == true ? User.Identity.Name : "Guest";
 
-    var userName = User.Identity.IsAuthenticated ? User.Identity.Name : "Guest";
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,69 +13,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - Serene Heights</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- CSS and JS Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">SERENE</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-pic">
+                                <img src="https://source.unsplash.com/250x250?girl" alt="Profile Picture" class="rounded-circle">
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sliders-h fa-fw"></i> Account</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form action="/Account/Logout" method="post" style="display: inline;">
+                                    <button type="submit" class="dropdown-item" style="border: none; background: none; cursor: pointer;">
+                                        <i class="fas fa-sign-out-alt fa-fw"></i> Log Out
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <div class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-4"></h1>
-            <main>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <div class="welcome-message">
-                        <h2>Welcome Back, @userName!</h2>
-                    </div>
-                }
-                else
-                {
-                    <div class="welcome-message">
-                        <h2>Welcome to SERENE!</h2>
-                    </div>
-                }
-            </main>
-            <a href="@Url.Action("BookRoom", "Booking")" class="btn btn-primary" >Book Now</a>
-
-
-        </div>
+    <div class="hero-section text-center py-5">
+        <h1>Welcome to Serene Heights</h1>
+        <h2>Explore our exquisite rooms</h2>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h3>Welcome Back, @userName!</h3>
+        }
+        else
+        {
+            <h3>Welcome, Guest!</h3>
+        }
+        <a href="@Url.Action("BookRoom", "Booking")" class="btn btn-primary mt-3">Book Now</a>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 SERENE. All rights reserved.</p>
-    </footer>
+    @if (Model != null && Model.Any())
+    {
+        <div class="container">
+            <div class="row">
+                @foreach (var room in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Room Image">
+                            <div class="card-body">
+                                <h5 class="card-title">@room.Description</h5>
+                                <p class="card-text">Price: @room.Price.ToString("C")</p>
+                                <p class="card-text">Max Adults: @room.Adults, Max Children: @room.Children</p>
+                                <a href="@Url.Action("RoomDetails", "Room", new { id = room.RoomID })" class="btn btn-info">View More</a>
+                                <a href="@Url.Action("BookRoom", "Booking", new { roomId = room.RoomID })" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>No rooms available at the moment.</p>
+    }
 
-    <!-- Load jQuery first -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Load jQuery UI (for Datepicker) -->
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

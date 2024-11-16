@@ -1,6 +1,10 @@
+using InvestmentProj.Data;
 using InvestmentProj.Models;
+using InvestmentProj.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging; // Ensure you have this using directive
 using System.Diagnostics;
 
 namespace InvestmentProj.Controllers
@@ -9,14 +13,30 @@ namespace InvestmentProj.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly AppDbContext _context; // Declare the context
 
-        public HomeController(ILogger<HomeController> logger)
+        // Inject the context and logger via constructor
+        public HomeController(AppDbContext context, ILogger<HomeController> logger)
         {
+            _context = context;
             _logger = logger;
         }
+
         public IActionResult Index()
         {
-            return View();
+            // Fetch the list of Room objects from the database
+            var rooms = _context.Rooms.ToList();
+
+            // Map Room objects to RoomVM objects
+            var roomVMs = rooms.Select(room => new RoomVM
+            {
+                RoomID = room.RoomID,
+       
+                // Map other properties as needed
+            }).ToList();
+
+            // Pass the list of RoomVMs to the view
+            return View(roomVMs);
         }
 
         public IActionResult AuthSelection()
@@ -24,18 +44,17 @@ namespace InvestmentProj.Controllers
             return View();
         }
 
-        // Action method for Gallery page
         [AllowAnonymous]
         public IActionResult Gallery()
         {
             return View();
         }
+
         [AllowAnonymous]
         public IActionResult News()
         {
             return View();
         }
-
 
         [AllowAnonymous]
         public IActionResult AboutUs()
@@ -44,25 +63,17 @@ namespace InvestmentProj.Controllers
         }
 
         [AllowAnonymous]
-        // Action method for Rooms page
         public IActionResult Rooms()
         {
             return View();
         }
 
-        // Action method for Hotels page
-
-
         [AllowAnonymous]
-        // Action method for Services page
         public IActionResult Services()
         {
             return View();
         }
 
-      
-    
-        // Error handling
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

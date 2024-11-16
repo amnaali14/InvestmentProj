@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 public class Room
 {
     [Key]
+
     public int RoomID { get; set; }
 
     [Required]

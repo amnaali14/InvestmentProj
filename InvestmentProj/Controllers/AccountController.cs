@@ -4,6 +4,8 @@ using InvestmentProj.ViewModels;
 using InvestmentProj.Models;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 public class AccountController : Controller
 {
@@ -15,7 +17,12 @@ public class AccountController : Controller
         _userManager = userManager;
         _signInManager = signInManager;
     }
-
+    [HttpPost]
+    public async Task<IActionResult> logout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Login", "Account");
+    }
     // GET: /Account/Login
     [HttpGet]
     public IActionResult Login()
@@ -46,9 +53,10 @@ public class AccountController : Controller
 
         return View(model);
     }
+  
 
-    // GET: /Account/Register
-    [HttpGet]
+// GET: /Account/Register
+[HttpGet]
     public IActionResult Register()
     {
         var model = new RegisterVM
@@ -63,13 +71,11 @@ public class AccountController : Controller
         return View();
     }
 
-    public IActionResult Aboutus()
+public IActionResult Aboutus()
     {
         
         return View();
     }
-
-
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -80,9 +86,6 @@ public class AccountController : Controller
         {
 
             var trimmedEmail = model.Email?.Trim().ToLower();
-
-
-
             if (await _userManager.FindByEmailAsync(trimmedEmail) != null)
             {
                 ModelState.AddModelError(string.Empty, "Email is already in use.");
@@ -113,12 +116,7 @@ public class AccountController : Controller
         return View(model);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Logout()
-    {
-        await _signInManager.SignOutAsync();
-        return RedirectToAction("Index", "Home");
-    }
+  
 
     private List<CountryCodeVM> GetCountryCodes()
     {

@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using InvestmentProj.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MyDatabase")));
 
@@ -48,6 +48,15 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LogoutPath = "/Account/Logout";
         options.AccessDeniedPath = "/Account/AccessDenied"; 
     });
+
+var configuration = builder.Configuration;
+
+builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+{ 
+   googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+}
+);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication().AddFacebook(opt =>

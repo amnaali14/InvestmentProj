@@ -25,11 +25,12 @@ namespace InvestmentProj.ViewModels
 
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
-        public string? Password { get; set; }
+        public string Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Passwords do not match, please try again!")]
-        [Display(Name = "Confirm Password")]
-        public string? ConfirmPassword { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Gender is required.")]
         public string? Gender { get; set; }
